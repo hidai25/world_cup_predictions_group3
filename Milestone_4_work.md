@@ -1,5 +1,5 @@
 ---
-title: sns.countplot(df4['Preferred Positions'],palette="Set2")
+title: EDA+Models
 notebook: Milestone_4_work.ipynb
 nav_include: 1
 ---
