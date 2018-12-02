@@ -1,3 +1,13 @@
+---
+title: sns.countplot(df4['Preferred Positions'],palette="Set2")
+notebook: Milestone_4_work.ipynb
+nav_include: 1
+---
+
+## Contents
+{:.no_toc}
+*  
+{: toc}
 
 #World cup 2018 prediction-Exploratory Data Analysis(Group 3)
 
@@ -6,7 +16,6 @@
 
 
 ```
-# load different libraries useful for our work
 
 import numpy as np
 import pandas as pd
@@ -47,13 +56,11 @@ from scipy.stats import norm
 ```
 
 
-#WC 2018 Participating teams and players data to be used throughout  our work<a id ='Teamdanalysis'></a> 
+#WC 2018 Participating teams and players data to be used throughout  our work<a id ='Teamdanalysis'></a>
 
 
 
 ```
-# https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads
-# scrape the squad of every nation selected to the world cup with their data and get a list of all the countries from wikipedia
 
 my_page=requests.get("https://en.wikipedia.org/wiki/2018_FIFA_World_Cup_squads")
 
@@ -69,13 +76,13 @@ CL_list = []
 top_node = CL_soup.find("th", attrs={"width": "200"})
 
 next_link = top_node.find_next('a')  # get the first link in the node
-for i in range(78):  # getting through the next 78 links 
+for i in range(78):  # getting through the next 78 links
     next_link = next_link.find_next('a')  # retrieve the next link
     CL_team = next_link.text.strip('\n')  # Strip all junk character
-    if CL_team and '[' not in CL_team:  # Condition to make sure that the link is an actual team 
-        CL_list.append(CL_team)  # Add the team to the champions league team 
+    if CL_team and '[' not in CL_team:  # Condition to make sure that the link is an actual team
+        CL_list.append(CL_team)  # Add the team to the champions league team
 
-        
+
 cup_date = datetime.datetime(2018, 7, 1, 0, 0, 0)
 country_tables = squad_soup.findAll("table", attrs={"class": "sortable wikitable plainrowheaders"})
 starlist = []
@@ -85,7 +92,7 @@ top_league_country = ['France', 'Italy', 'Germany', 'England', 'Spain']   #List 
 
 for country_table in country_tables:
     players = country_table.findAll("th", attrs={"scope": "row"})
-        
+
     for name in players:
         d = dict()
         d['name'] = name.find('a').text.strip('\n')
@@ -94,7 +101,7 @@ for country_table in country_tables:
         rawbday = name.find_next_sibling()
         bday = datetime.datetime.strptime(rawbday.find('span',attrs={'class':'bday'}).text.strip('\n'), '%Y-%m-%d')
         age = rdelta.relativedelta(cup_date,bday).years
-        
+
         d['age'] = age
         caps = rawbday.find_next_sibling()
         d['caps'] = caps.text.strip('\n')
@@ -103,16 +110,16 @@ for country_table in country_tables:
         country = goals.find_previous('h3').find('span').text.strip('\n')
         club = goals.find_next('a').find_next('a').text.strip('\n')   # Retrieve the club information of the player
         if caps.find_next('a')['title'] in top_league_country:  #Check if the Club is in Top5 leagues
-            top_league = 1  # If yes, CLub in Top 5 league 
-        else: 
+            top_league = 1  # If yes, CLub in Top 5 league
+        else:
             top_league = 0  # Club isn't in top 5 league
         d['country'] = country
         d['club'] = club  # Add the club Name of the player in the DataFrame
-        d['Top League'] = top_league # Add the player in Top 5 League or Not. 
-        
+        d['Top League'] = top_league # Add the player in Top 5 League or Not.
+
         if club in CL_list:  # Check if the club played champions league
             CL_league = 1
-        else: 
+        else:
             CL_league = 0
         d['CL League 2017-2018'] = CL_league # add Champions league 2017/2018 to the data frame
         starlist.append(d)
@@ -132,13 +139,10 @@ print(countrylist)
 
 
 ```
-# put the squad data and nations participating on a data frame to use in later analysis
 
-# players squads in details and their respective information
 df_players = pd.DataFrame(starlist)
 display(df_players.head())
 
-# All the national teams participating in the world cup- used frequently throughout our worl
 df_countries = pd.DataFrame(countrylist,columns = ['Nations Participating'])
 display(df_countries.head())
 
@@ -297,7 +301,6 @@ list_of_players=df_players['name']
 
 
 ```
-# make a pivot table of the averages of all the squads  ages caps and goals and sum the other columns
 df_players['caps'] = pd.to_numeric(df_players['caps'])
 df_players['goals'] = pd.to_numeric(df_players['goals'])
 players_features = pd.pivot_table(df_players,index='country',values=['age','caps','Top League','CL League 2017-2018','goals'], aggfunc={'age':'mean','caps':'mean','Top League':'sum','CL League 2017-2018':'sum','goals':'sum'}) # 'Top League'
@@ -403,7 +406,6 @@ players_features.head()
 
 
 ```
-# wolrdcup1 fifa international results
 response = requests.get('https://drive.google.com/uc?export=download&id=1p9aepCMiZWyA9eQYuUl3gDV51kYVqMDj')
 df = pd.read_csv(BytesIO(response.content))
 df.head()
@@ -603,7 +605,6 @@ df.describe()
 
 ```
 
-# Add winnning team column and goal difference
 winner=[]
 for i in range(len(df['home_team'])):
   if df['home_score'][i] > df['away_score'][i]:
@@ -727,12 +728,10 @@ df.head()
 
 
 ```
-# get all historical matches of the countries participating in 2018 world cup
 
 df_natteam_home=df[df['home_team'].isin(countrylist)]
 df_natteam_away=df[df['away_team'].isin(countrylist)]
 df=pd.concat((df_natteam_home,df_natteam_away))
-# df.drop_duplicates()
 display(df.shape)
 df.head()
 ```
@@ -850,7 +849,6 @@ df.head()
 
 
 ```
-# get all international matches of the teams of the world cup since 1990
 year=[]
 for n in df['date']:
   year.append(int(n[:4]))
@@ -1230,14 +1228,11 @@ df_natteam.head()
 
 
 ```
-# Show distribution of goal differences in the international matches
 
-# fig, axes = plt.subplots(2, 1)
 plt.hist(df_natteam['goal_difference'],bins=100)
 plt.xlabel("number of goals")
 plt.ylabel("count")
 plt.title("goal difference in all international matches")
-# df.hist('h_draw',bins=100, ax=axes[0,1])
 ```
 
 
@@ -1255,7 +1250,6 @@ plt.title("goal difference in all international matches")
 
 
 ```
-# Show the distribution of the most played international tournaments
 df_natteam['tournament'].value_counts()[:8].plot(kind='barh')
 plt.xlabel("Number of matches")
 ```
@@ -1275,7 +1269,6 @@ plt.xlabel("Number of matches")
 
 
 ```
-# show the countries with the most wins since 1990 for all these international games
 df_natteam['winning_team'].value_counts()[1:11].plot(kind='barh')
 plt.xlabel("Winnings")
 plt.title("The 10 most successful countries in internataional matches since 1990")
@@ -1331,7 +1324,6 @@ plt.title('Performance of Home Team')
 
 
 ```
-# Create x and y train
 x_train = df_natteam[['home_team','away_team']]
 y_train = df_natteam['winning_team']
 ```
@@ -1342,7 +1334,6 @@ y_train = df_natteam['winning_team']
 
 
 ```
-# scrape and create our test set
 
 fifa_page=requests.get("https://fixturedownload.com/results/fifa-world-cup-2018")
 ranking_soup = BeautifulSoup(fifa_page.text, "html.parser")
@@ -1354,11 +1345,11 @@ score = []
 away_country = []
 for row in rows_match:
     tds = row.findAll('td')
-    
+
     home_country.append(tds[3].text)
-    
+
     away_country.append(tds[4].text)
-    
+
     score.append(tds[6].text)
 ```
 
@@ -1453,8 +1444,6 @@ y_test = df['winning_team']
 
 
 ```
-# scrape the Fifa rankings from the fifa.com website as of the seventh of june 2018- Just before the world cup started
-# https://www.fifa.com/fifa-world-ranking/ranking-table/men/rank/id12210/#all
 
 
 
@@ -1462,24 +1451,21 @@ fifa_page=requests.get("https://www.fifa.com/fifa-world-ranking/ranking-table/me
 
 ranking_soup = BeautifulSoup(fifa_page.text, "html.parser")
 
-    
+
 ranking_table = ranking_soup.findAll("tbody")
 
 ranking_list=[]
 
-# rankings= ranking_tables.find_all("span",attrs={'class':"fi-t__nText "})
 
 
-# ranking_tables
 
-# div class="fi-t__n"
-        
+
 for rank in ranking_table:
   ranked_countries = rank.findAll('tr')
-  
+
   for c in ranked_countries:
     di = dict()
-    
+
     ranking = c.find('td',attrs={'class':"fi-table__td fi-table__rank"}).text
     di['ranking'] = ranking
     di['country_ranked_06/18']=c.find('a',attrs={'class':"fi-t__link"}).find('span',attrs={'class':"fi-t__nText"}).text
@@ -1496,10 +1482,10 @@ df_ranking.head()
 ```
 
 
-    /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:37: SettingWithCopyWarning: 
+    /usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:37: SettingWithCopyWarning:
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
-    
+
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
 
 
@@ -1635,7 +1621,6 @@ df_ranking.head()
 
 
 ```
-# get the 20 most recent performance and later make it a predictor
 winning_teamlist = df['winning_team'].unique()
 
 number_wins = []
@@ -1709,19 +1694,18 @@ df_wins.set_index('country').head()
 
 
 ```
-# Function to get the Original Country of Coach and his/her age 
-import datetime 
+import datetime
 import time
-now = datetime.datetime.now()  # Import the datetime  library 
+now = datetime.datetime.now()  # Import the datetime  library
 
 def coach_info(url):
     page = requests.get(url)
-    soup = BeautifulSoup(page.text, "html.parser")  # Parse the passed URL 
-    
-    
+    soup = BeautifulSoup(page.text, "html.parser")  # Parse the passed URL
+
+
     nodes = soup.select('div.fi-p__profile-text--uppercase')  # Select the div necessary for scrapping values
-    age = now.year - int(nodes[0].find('span').text.strip()[-4:])  # Extract the age of the coach 
-    nationality = nodes[1].find('span').text.strip()  # extract the nationality of the coach 
+    age = now.year - int(nodes[0].find('span').text.strip()[-4:])  # Extract the age of the coach
+    nationality = nodes[1].find('span').text.strip()  # extract the nationality of the coach
     return (age, nationality)
 ```
 
@@ -1729,7 +1713,6 @@ def coach_info(url):
 
 
 ```
-# Get the list for all coaches for the world cup, their age, original country 
 
 
 ROOT = "https://www.fifa.com"
@@ -1740,7 +1723,6 @@ coach_soup = BeautifulSoup(coach_page.text, "html.parser") # Parse the page.text
 salary_page = requests.get("http://www.footballwood.in/salary-every-coach-in-2018-fifa-world-cup.html") # URL to get salary for coaches
 salary_soup = BeautifulSoup(salary_page.text, "html.parser")
 
-# Get list of coaches salary and their country 
 coach_dict = {}
 salary_nodes = salary_soup.findAll('tr')
 for i in range(1,len(salary_nodes)):
@@ -1748,32 +1730,31 @@ for i in range(1,len(salary_nodes)):
     if pays == 'Iran': pays = 'IR Iran'
     if pays == 'South Korea': pays = 'Korea Republic'
     salaire = salary_nodes[i].findNext('td').findNext('td').findNext('td').findNext('td').text.strip('£')   
-    if salaire[-1] == 'm': 
+    if salaire[-1] == 'm':
         salary = float(salaire.strip('m')) * 1000000
     else:
         salary = float(salaire.replace(',', ''))
     coach_dict[pays] = salary
- 
-    
+
+
 #ranking_table = ranking_soup.findAll("tbody")
 
 def parse_coach (soup: BeautifulSoup):
-    
+
     coachlist = []  #List to save the coaches
     teamlist = []  #list of save the team
-    
+
     coach_nodes = soup.select('div.fi-p__name')   # Narrow to div containing the coach names
-    team_nodes = soup.select('div.fi-p__country') # Narrow to div contaning the coach's team 
+    team_nodes = soup.select('div.fi-p__country') # Narrow to div contaning the coach's team
     detail_nodes = soup.select('div.col-sm-3')    # Get the href for the Coach information
     for i in range(len(coach_nodes)):
         dictionaire = {}  # dictionaire to save the coach and the team he/she corresponds to
-        dictionaire['country'] = team_nodes[i].text.strip() # Get the country name for the coach 
+        dictionaire['country'] = team_nodes[i].text.strip() # Get the country name for the coach
         dictionaire['coach'] = coach_nodes[i].text.strip() # Get the coach corresponding to the country
-        dictionaire['coach age'], dictionaire['nationality'] = coach_info(ROOT+detail_nodes[i].find('a').attrs['href']) # Get age and nationality of the coach 
+        dictionaire['coach age'], dictionaire['nationality'] = coach_info(ROOT+detail_nodes[i].find('a').attrs['href']) # Get age and nationality of the coach
         dictionaire['Coach Salary'] = coach_dict[team_nodes[i].text.strip()]
-#         time.sleep(2)
         coachlist.append(dictionaire)
-        
+
     return coachlist
 ```
 
@@ -1869,12 +1850,11 @@ df_coaches.head()
 
 
 ```
-#Data set with Few predictor focused on Fifa Ranking 
+#Data set with Few predictor focused on Fifa Ranking
 result3 = pd.merge(df_wins, players_features, on='country')
 result3 = pd.merge(result3,df_ranking, on='country')
 result3 = pd.merge(result3,df_coaches, on='country')
 result3 = result3.set_index('country')
-# drop unnecessary columns
 result3=result3.drop(["Top League","nationality","CL League 2017-2018", "coach", "coach age"],axis=1)
 display(result3.head())
 
@@ -1971,7 +1951,6 @@ display(result3.head())
 
 
 ```
-# standardize the features data frame because of differences in values scale
 result3 = (result3-result3.mean())/result3.std()
 result3.head()
 ```
@@ -2097,7 +2076,7 @@ bplot4=result3.boxplot(column=['Coach Salary'],figsize=(2,4),
 
 ```
 plt.figure(figsize=(9,5))
-sns.heatmap(result3.corr(),annot=True) 
+sns.heatmap(result3.corr(),annot=True)
 ```
 
 
@@ -2117,11 +2096,10 @@ sns.heatmap(result3.corr(),annot=True)
 
 
 ```
-# function used  in order to merge the x and y_train sets with the features data frame and then give it to the model
 
 def prepare_data(x_train,y_train,result):
 
-    x1 = np.array(result.loc[x_train['home_team']])   # Match each home team game to it's stats 
+    x1 = np.array(result.loc[x_train['home_team']])   # Match each home team game to it's stats
     x2 = np.array(result.loc[x_train['away_team']])   # Match each away team game to its stats
     y = np.zeros_like(y_train.values)
     y[y_train.values == 'Draw'] = 0   #Build the classfication
@@ -2130,7 +2108,7 @@ def prepare_data(x_train,y_train,result):
     y = np.array(y,dtype=np.float64)
     x = np.hstack((x1,x2))     # Overall dataset made of 68 predictors. 34 of the same for each team
     return x,y
-  
+
    # fit the logistic regression model
 reg = LogisticRegression(penalty='l2',multi_class='multinomial',solver='newton-cg', random_state=123)
 x,y = prepare_data(x_train,y_train,result3)
@@ -2140,7 +2118,6 @@ x,y = prepare_data(x_train,y_train,result3)
 
 
 ```
-# function to get the observed versus predicted values
 def encoder(ypred,y_train,x_train):
     ypred_label = list()
     k = 0
@@ -2159,7 +2136,6 @@ def encoder(ypred,y_train,x_train):
 
 
 ```
-# function used in order to get the a confusion matrix of the classifcation model used
 def confusion_matrix_model(model_used):
     cm=confusion_matrix(y,model_used.predict(x))
     col=["Predicted Away Win","Predicted Draw","Predicted Home Win"]
@@ -2176,16 +2152,13 @@ def confusion_matrix_model(model_used):
 
 
 ```
-# fit the logistic regression model
 reg3 = LogisticRegression(penalty='l2',multi_class='multinomial', solver='newton-cg', random_state=123)
 x,y = prepare_data(x_train,y_train,result3)
 mm3 = pd.DataFrame(x)
 reg3.fit(x,y)
 ypredml1 = reg3.predict(x)
-# df_predml1 = encoder(ypredml1,y_train,x_train)
-# display(df_predml1.head())
 df_pred_mat_lr = confusion_matrix_model(reg3)
-display("conf matrix of logisitic regression",df_pred_mat_lr) 
+display("conf matrix of logisitic regression",df_pred_mat_lr)
 print("accuracy score or the model logistic regression multinomial model is:",accuracy_score(ypredml1,y))
 ```
 
@@ -2250,7 +2223,6 @@ print("accuracy score or the model logistic regression multinomial model is:",ac
 
 
 ```
-# fit knn
 KNN3=KNeighborsClassifier(n_neighbors=12,p=1,weights='uniform')
 KNN3.fit(x,y)
 #make predictions
@@ -2322,7 +2294,6 @@ print("accuracy score of the knn model:",accuracy_score(ypredml3,y))
 
 
 ```
-# fit the random forest model and get its accuracy score
 rfml = RandomForestClassifier(n_estimators=50, oob_score=True, max_depth=10,random_state=1234)
 rfml.fit(x, y)
 ypredml2=rfml.predict(x)
@@ -2374,7 +2345,6 @@ plt.legend(['Home Team','Away Team'])
 
 
 ```
-# result3 coefficients
 
 plt.figure(figsize = [9,9])
 plt.title('Logisitic Feature Comparison (Age)')
@@ -2405,7 +2375,6 @@ plt.barh(result3.columns[1]+' Away win',reg3.coef_[2,6],color='y')
 
 
 ```
-# sofifa complete dataset
 response = requests.get('https://drive.google.com/uc?export=download&id=12Km8bbBwLulQi2uFymPSCkXBTB5Ws-qj')
 #have to decode the bytes before it can be read by pandas into df
 df1 = pd.read_csv(BytesIO(response.content),index_col=0)
@@ -2592,7 +2561,6 @@ df1.head()
 
 
 ```
-# rank players according to their overall score
 df1.nlargest(100, columns='Overall').head()
 ```
 
@@ -2772,7 +2740,6 @@ df1.nlargest(100, columns='Overall').head()
 
 
 ```
-# clean unnecessary columns and strip the value and wage column from non numeric signs to make the data analyzable
 df1_clean=df1.drop(["Photo","Flag","Club Logo"],axis=1)
 df1_clean['Value'] = df1_clean['Value'].str.replace('€', '')
 df1_clean['Wage']=df1_clean['Wage'].str.replace('€','')
@@ -2785,13 +2752,13 @@ def parseValueColumn(strVal):
         return int(float(strVal.replace('K', '')) * 1000)
     else:
         return int(strVal)   
-#parse string for thousands to numeric values 
+#parse string for thousands to numeric values
 def parseWageColumn(strVal):
   if 'K' in strVal:
     return int(float(strVal.replace('K', '')) * 1000)
   else:
     return int(strVal)   
- 
+
 df1_clean['Value'] = df1_clean['Value'].apply(lambda x: parseValueColumn(x))
 df1_clean['Wage']=df1_clean['Wage'].apply(lambda x: parseWageColumn(x))
 ```
@@ -2800,7 +2767,6 @@ df1_clean['Wage']=df1_clean['Wage'].apply(lambda x: parseWageColumn(x))
 
 
 ```
-# check for null data
 
 df1.isnull().sum()
 ```
@@ -2839,7 +2805,7 @@ df1.isnull().sum()
     GK reflexes               0
     Heading accuracy          0
     Interceptions             0
-                           ... 
+                           ...
     Vision                    0
     Volleys                   0
     CAM                    2029
@@ -3082,7 +3048,6 @@ df1_clean.columns
 
 
 ```
-# limit the players for only the players in the world cup
 df1_clean=df1_clean[df1_clean['Nationality'].isin(countrylist)]
 display(df1_clean.shape)
 df1_clean.columns
@@ -3165,7 +3130,6 @@ df1_clean.dtypes
 
 
 ```
-# show players value distribution
 plt.hist(df1_clean['Value'], bins=10, alpha=0.4, color='b')
 plt.title("Players Value distribution")
 plt.xlabel("players value")
@@ -3189,7 +3153,6 @@ plt.ylabel("Count")
 
 
 ```
-# change object type data to integer for pivot table and fill 0 in string values
 df1_clean.iloc[:,9:43]=df1_clean.iloc[:,9:43].apply(pd.to_numeric, errors='coerce').fillna(0).astype(int)
 ```
 
@@ -3402,12 +3365,10 @@ players_pivot.head()
 
 
 ```
-# this dataframe englobes all the predictors that make our own model
 
 result2 = pd.merge(df_wins, players_pivot, on='country')
 result2 = pd.merge(result2,df_ranking, on='country')
 result2 = result2.set_index('country')
-# drop the rankings and id columns
 result2=result2.drop(['ranking','ID'], axis=1)
 result2.head()
 ```
@@ -3612,7 +3573,6 @@ result2.head()
 
 
 ```
-# Standardize the feature dataset
 
 result2 = (result2-result2.mean())/result2.std()
 result2.head()
@@ -3815,23 +3775,19 @@ result2.head()
 
 
 
-# Results of our own model
 
 ##Logistic regression- Our own model
 
 
 
 ```
-# fit the logistic regression model
 reg2 = LogisticRegression(penalty='l2',multi_class='multinomial',solver='lbfgs',random_state=123456)
 x,y = prepare_data(x_train,y_train,result2)
 mt = pd.DataFrame(x)
-# scatter_matrix(mt)
-# print(x.shape)
 reg2.fit(x,y)
 ypredmf1 = reg2.predict(x)
 df_pred_full_lr = confusion_matrix_model(reg2)
-display("conf matrix of logisitic regression of our model",df_pred_full_lr) 
+display("conf matrix of logisitic regression of our model",df_pred_full_lr)
 print("accuracy score or the model logistic regression multinomial model is:",accuracy_score(ypredmf1,y))
 
 ```
@@ -3897,7 +3853,6 @@ print("accuracy score or the model logistic regression multinomial model is:",ac
 
 
 ```
-# fit knn
 KNN2=KNeighborsClassifier(n_neighbors=12,p=1,weights='uniform')
 x,y = prepare_data(x_train,y_train,result2)
 KNN2.fit(x,y)
@@ -3987,7 +3942,6 @@ result2.boxplot(column=['Age','# won','Wage','Overall'],figsize=(10,8),
 
 
 ```
-# show players Overall distribution
 plt.hist(df1.Potential, bins=10, alpha=0.4,normed=True, color='b')
 plt.title("#Players Potential distribution")
 plt.xlabel("Potential")
@@ -4005,7 +3959,6 @@ plt.show()
 
 
 
-# show players Overall distribution
 plt.hist(df1_clean.Potential, bins=10, alpha=0.4,normed=True, color='b')
 plt.title("#Players Overall Rating distribution")
 plt.xlabel("Overall")
@@ -4042,7 +3995,6 @@ playerval=df1.groupby('Club')['Value']
 playernationality=df1.groupby('Nationality')['Age']
 
 
-# n = pd.DataFrame(list(zip(df1['Value'],df1['Club'])))
 age_high = result2.Age.sort_values()[:10]
 age_low = result2.Age.sort_values()[-10:]
 
@@ -4150,7 +4102,7 @@ df_ttest=pd.DataFrame(pvalues)
 df_ttest[df_ttest['pvalue']>0.05]
 
 
-      
+
 ```
 
 
@@ -4492,14 +4444,11 @@ df_ttest[df_ttest['pvalue']>0.05]
 
 
 
-# DataFrame give by TF with wage data and team data 
 
-# New Section
 
 
 
 ```
-# sofifa player personal data
 
 response = requests.get('https://drive.google.com/uc?export=download&id=1vH1cY_CR1x5ChVzaim9vJ6hg2UodTpvp')
 #have to decode the bytes before it can be read by pandas into df
@@ -4650,7 +4599,6 @@ df3.shape
 
 
 ```
-# check for null values in data
 df3.isnull().sum()
 ```
 
@@ -4794,7 +4742,7 @@ df3_clean.head()
 df3_clean['Value'] = df3_clean['Value'].str.replace('€', '')
 df3_clean['Wage']=df3_clean['Wage'].str.replace('€','')
 
- 
+
 #parse string for millions and thousands to numeric values
 def parseValueColumn(strVal):
     if 'M' in strVal:
@@ -4803,13 +4751,13 @@ def parseValueColumn(strVal):
         return int(float(strVal.replace('K', '')) * 1000)
     else:
         return int(strVal)   
-#parse string for thousands to numeric values 
+#parse string for thousands to numeric values
 def parseWageColumn(strVal):
   if 'K' in strVal:
     return int(float(strVal.replace('K', '')) * 1000)
   else:
     return int(strVal)   
- 
+
 df3_clean['Value'] = df3_clean['Value'].apply(lambda x: parseValueColumn(x))
 df3_clean['Wage']=df3_clean['Wage'].apply(lambda x: parseWageColumn(x))
 ```
@@ -5167,12 +5115,10 @@ df3_pivot.describe()
 
 
 
-# Data given from TF about players positions with their id
 
 
 
 ```
-# sofifa player playing position data
 
 response = requests.get('https://drive.google.com/uc?export=download&id=1QL43193ev8I66MXp3iJxwiC-jj7AGBMo')
 df4 = pd.read_csv(BytesIO(response.content),index_col=0)
@@ -5637,10 +5583,8 @@ df4.columns
 
 
 ```
-# plt.hist(df4['Preferred Positions'].value_counts())
 plt.figure(figsize=(8,3))
- 
-# sns.countplot(df4['Preferred Positions'],palette="Set2")
+
 
 df4['Preferred Positions'].value_counts()[1:11].plot(kind='bar')
 plt.xlabel("Preferred Positions")
@@ -5659,4 +5603,3 @@ plt.title("The 10 most preferred positions by players")
 
 
 ![png](Milestone_4_work_files/Milestone_4_work_94_1.png)
-
