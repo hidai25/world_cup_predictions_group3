@@ -1,5 +1,5 @@
 ---
-title: EDA+Models
+title: Description of Data and EDA
 notebook: Milestone_4_work.ipynb
 nav_include: 1
 ---
