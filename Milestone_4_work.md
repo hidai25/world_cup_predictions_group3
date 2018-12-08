@@ -1,7 +1,3 @@
----
-title: Description of Data and EDA
-notebook: Milestone_4_work.ipynb
----
 
 ## Contents
 {:.no_toc}
