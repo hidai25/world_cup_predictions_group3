@@ -14,10 +14,7 @@ host nation are qualified and play for the title over a period of approximately 
 Using machine-learning techniques, the goal is to predict the outcome of all 64 games
 (including the playoff games) of the FIFA world cup 2018.
 
-__Motivation__
+## Motivation
 
-## Introduce the project motivation both as
+Introduce the project motivation both as
 a whole as well as motivations for important defining aspects your work. For example, were there any visualization or UI primitives that informed your work?
-[Visit GitHub!](www.github.com).
-
-![wc](../images/wc picture 0812.png)
