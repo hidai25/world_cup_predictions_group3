@@ -1,7 +1,8 @@
-h1, p, h3 {
+h1{
   background-color: black;
   color:white;
   text-align: center;
+  padding-bottom:  3%;
 }
 
 h3 {
