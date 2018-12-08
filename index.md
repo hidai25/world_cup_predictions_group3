@@ -2,9 +2,9 @@
 title: Overview
 ---
 
-```html
-<a href="images/wc_pic.png"></a>
-```
+
+ ![cup]("images/wc_pic.png")
+
 
 
 Billions around the globe watch the FIFA world cup. Given the popularity of each of the
