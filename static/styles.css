@@ -11,7 +11,10 @@
 #top{
   white-space: normal;
   background-color: black;
-  vertical-align:middle; 
+  vertical-align:middle;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); 
 }
 
 h3 {
