@@ -13,4 +13,5 @@ Using machine-learning techniques, the goal is to predict the outcome of all 64 
 
 __Motivation__
 
-##Introduce the project motivation both as a whole as well as motivations for important defining aspects your work. For example, were there any visualization or UI primitives that informed your work?
+##Introduce the project motivation both as
+a whole as well as motivations for important defining aspects your work. For example, were there any visualization or UI primitives that informed your work?
