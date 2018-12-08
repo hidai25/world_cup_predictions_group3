@@ -17,4 +17,4 @@ __Motivation__
 a whole as well as motivations for important defining aspects your work. For example, were there any visualization or UI primitives that informed your work?
 [Visit GitHub!](www.github.com).
 
-![Image of Yaktocat](https://www.google.co.il/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjOoqiJ1Y_fAhUIZ1AKHV31DzsQjRx6BAgBEAU&url=http%3A%2F%2Fwww.sportingnews.com%2Fus%2Fsoccer%2Fnews%2Fworld-cup-2018-beginners-guide-sites-favorites-players-to-watch%2Fcp5tx7nlhrdz1e1uuulyod0dx&psig=AOvVaw3FXoex5TqOJuIxDnUE9vdH&ust=1544338957107683)
+![Image of Yaktocat](wc picture 0812.png)
