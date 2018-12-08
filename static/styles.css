@@ -2,9 +2,10 @@
   background-color: black;
   color:white;
   text-align: center;
-  padding-bottom:  3%;
+  padding-bottom: 2%;
     width:100%;
     vertical-align: middle;
+    display: table-cell;
 }
 
 h3 {
