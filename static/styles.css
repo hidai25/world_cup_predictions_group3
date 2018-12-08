@@ -1,17 +1,16 @@
-#main-title{
-
-  color:white;
+#main-title {
+  color: white;
   text-align: center;
   padding-bottom: 2%;
-    width:100%;
-    vertical-align: middle;
-
+  width: 100%;
+  vertical-align: middle;
+  position: absolute;
 }
 
-#top{
+#top {
   white-space: normal;
   background-color: black;
-  vertical-align:middle; 
+  vertical-align: middle;
 }
 
 h3 {
@@ -30,7 +29,7 @@ h3 {
   text-align: center;
 }
 
-nav{
+nav {
   overflow: hidden;
   background-color: #2a3b56;
   width: 100%;
@@ -42,7 +41,7 @@ nav{
   padding: 0.2em 2em;
   color: white;
   width: 100%;
-  padding:4px;
+  padding: 4px;
   border-left: 0.8px solid white;
 }
 
@@ -74,33 +73,38 @@ nav{
   }
 }
 
-html, body{
+html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-.credit{
- margin-right:2%;
- text-align: right;
- font-size: 12px
+.credit {
+  margin-right: 2%;
+  text-align: right;
+  font-size: 12px
 }
 
-.table tr a{
+.table tr a {
   color: darkblue;
 }
 
 div {
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 ul {
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 ol {
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 p {
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 .table {
-  font-size: 16px; }
+  font-size: 16px;
+}
