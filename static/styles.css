@@ -5,8 +5,11 @@
   padding-bottom: 2%;
     width:100%;
     vertical-align: middle;
-   white-space: nowrap;
-   margin-top:1%; 
+
+}
+
+#top{
+  white-space: nowrap;
 }
 
 h3 {
