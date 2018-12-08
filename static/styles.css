@@ -11,6 +11,7 @@
 #top{
   white-space: normal;
   background-color: black;
+  vertical-align:middle; 
 }
 
 h3 {
