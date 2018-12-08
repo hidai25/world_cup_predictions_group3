@@ -28,6 +28,10 @@ nav{
   list-style-type: none;
   text-align: center;
   white-space: nowrap;
+  padding: 0.2em 2em;
+  color: white;
+  border-left: 0.8px solid white;
+  text-align: center;
 }
 
 #navigation_bar ul li {
