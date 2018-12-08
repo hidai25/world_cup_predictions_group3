@@ -16,3 +16,4 @@ __Motivation__
 (##Introduce the project motivation both as)
 a whole as well as motivations for important defining aspects your work. For example, were there any visualization or UI primitives that informed your work?
 [Visit GitHub!](www.github.com).
+![Benjamin Bannekat](https://octodex.github.com/images/bannekat.png)
