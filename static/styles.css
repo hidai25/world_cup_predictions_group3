@@ -1,5 +1,5 @@
 #main-title{
-  background-color: black;
+
   color:white;
   text-align: center;
   padding-bottom: 2%;
@@ -10,6 +10,7 @@
 
 #top{
   white-space: normal;
+  background-color: black;
 }
 
 h3 {
