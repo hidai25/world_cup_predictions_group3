@@ -17,4 +17,4 @@ __Motivation__
 a whole as well as motivations for important defining aspects your work. For example, were there any visualization or UI primitives that informed your work?
 [Visit GitHub!](www.github.com).
 
-![wc](wc picture 0812.png)
+![wc](../Downloads/wc picture 0812.png)
