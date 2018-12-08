@@ -2,6 +2,11 @@
 title: Overview
 ---
 
+```html
+<a href="images/wc_pic.png"></a>
+```
+
+
 Billions around the globe watch the FIFA world cup. Given the popularity of each of the
 games played during the tournament, people have attempted to predict outcomes of this world popular
 sport. The FIFA world cup is played every four (4) years and three (3) years leading up to it, all the
