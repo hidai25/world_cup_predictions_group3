@@ -2,7 +2,7 @@
 ![png](images/wc_pic.png)
 
 ---
-title: Overview
+__Overview__
 ---
 
 Billions around the globe watch the FIFA world cup. Given the popularity of each of the
