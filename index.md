@@ -1,9 +1,9 @@
 
 ![png](images/wc_pic.png)
 
----
-__Overview__
----
+
+# Overview
+
 
 Billions around the globe watch the FIFA world cup. Given the popularity of each of the
 games played during the tournament, people have attempted to predict outcomes of this world popular
