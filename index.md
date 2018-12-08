@@ -1,5 +1,7 @@
 ---
 title: Overview
+nav_include: 1
+
 ---
 
 Billions around the globe watch the FIFA world cup. Given the popularity of each of the
