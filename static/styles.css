@@ -1,6 +1,9 @@
 h1, p, h3 {
   margin-left: 2%;
   margin-right: 2%;
+  background-color: black;
+  color:white;
+  text-align: center;
 }
 
 h3 {
@@ -31,7 +34,6 @@ nav{
   padding: 0.2em 2em;
   color: white;
   border-left: 0.8px solid white;
-  text-align: center;
 }
 
 #navigation_bar ul li {
