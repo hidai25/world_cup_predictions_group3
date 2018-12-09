@@ -2,7 +2,7 @@
 title: Problem Statement
 nav_include: 2
 ---
-__Motivation__
+<h1> Motivation </h1>
 Various sports are played around the world. Fan clubs passionately cheer for their teams. Arguably
 predicting winners at these games is common across sports. Teams that have been winning
 historically or recently have higher chances of winning. However, no consecutive world cup has the
