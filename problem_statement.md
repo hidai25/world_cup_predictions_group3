@@ -36,3 +36,15 @@ as follows:
 easy to quantify.
 3. Being a human based activity, physiological effects of players playing on the world’s biggest
 stage are in many cases are not quantifiable
+
+
+Challenges and Limitations
+This problem statement contains factors that the machine-learning model cannot account for. The
+model built will be just as good as the data used to build it, since the data will not represent these
+criteria, our end model will not be able to predict based on these factors either. These variables are
+as follows:
+1. Unfair referees at a match
+2. Fluctuating variables such as weather on the day of the game, fans’ sentiments, which are not
+easy to quantify.
+3. Being a human based activity, physiological effects of players playing on the world’s biggest
+stage are in many cases are not quantifiable
