@@ -1,7 +1,7 @@
 
 
 
-<img src="images/wc_pic.png" width="980" height="500" />
+<img src="images/overpic.png" width="980" height="500" />
 <figcaption class="credit">
     <span>
         	        Image by Fifa.com
