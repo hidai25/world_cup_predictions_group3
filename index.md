@@ -1,10 +1,7 @@
 
 
 
-<img src="images/overpic.png" width="950" height="400" />
-
-
-
+<img src="images/overpic.png" width="980" height="500" />
 
 # Overview
 
