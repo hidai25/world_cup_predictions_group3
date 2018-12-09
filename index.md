@@ -1,7 +1,18 @@
 
 
 
-<img src="https://www.google.co.il/imgres?imgurl=https%3A%2F%2Fwww.mykhel.com%2Fimg%2F2018%2F06%2Frussia-2018-official-logo-1528701072.jpg&imgrefurl=https%3A%2F%2Fwww.mykhel.com%2Ffootball%2Ffifa-world-cup-2018-three-most-exciting-matches-group-stage-091571.html&docid=mQwgJlG8S4KiFM&tbnid=liyJjD4JjQqtoM%3A&vet=10ahUKEwjCqIisoJPfAhVNJ1AKHQOeBVYQMwhyKAgwCA..i&w=950&h=634&bih=772&biw=1440&q=world%20cup%202018&ved=0ahUKEwjCqIisoJPfAhVNJ1AKHQOeBVYQMwhyKAgwCA&iact=mrc&uact=8" width="700" height="200" />
+
+
+
+```{r, echo=FALSE}
+# Define variable containing url
+url <- "https://www.google.co.il/imgres?imgurl=https%3A%2F%2Fwww.mykhel.com%2Fimg%2F2018%2F06%2Frussia-2018-official-logo-1528701072.jpg&imgrefurl=https%3A%2F%2Fwww.mykhel.com%2Ffootball%2Ffifa-world-cup-2018-three-most-exciting-matches-group-stage-091571.html&docid=mQwgJlG8S4KiFM&tbnid=liyJjD4JjQqtoM%3A&vet=10ahUKEwjCqIisoJPfAhVNJ1AKHQOeBVYQMwhyKAgwCA..i&w=950&h=634&bih=772&biw=1440&q=world%20cup%202018&ved=0ahUKEwjCqIisoJPfAhVNJ1AKHQOeBVYQMwhyKAgwCA&iact=mrc&uact=8"
+```
+## Some cat!
+<center><img src="`r url`"></center>
+
+
+
 
 # Overview
 
