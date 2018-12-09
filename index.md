@@ -1,5 +1,5 @@
 
-![png](images/wc_pic.png)
+![png](images/wc_pic.png=500x500)
 
 
 # Overview
