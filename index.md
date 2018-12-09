@@ -1,15 +1,7 @@
 
 
 
-
-
-
-```{r, echo=FALSE}
-# Define variable containing url
-url <- "https://www.google.co.il/imgres?imgurl=https%3A%2F%2Fwww.mykhel.com%2Fimg%2F2018%2F06%2Frussia-2018-official-logo-1528701072.jpg&imgrefurl=https%3A%2F%2Fwww.mykhel.com%2Ffootball%2Ffifa-world-cup-2018-three-most-exciting-matches-group-stage-091571.html&docid=mQwgJlG8S4KiFM&tbnid=liyJjD4JjQqtoM%3A&vet=10ahUKEwjCqIisoJPfAhVNJ1AKHQOeBVYQMwhyKAgwCA..i&w=950&h=634&bih=772&biw=1440&q=world%20cup%202018&ved=0ahUKEwjCqIisoJPfAhVNJ1AKHQOeBVYQMwhyKAgwCA&iact=mrc&uact=8"
-```
-## Some cat!
-<center><img src="`r url`"></center>
+<img src="https://www.google.co.il/imgres?imgurl=https%3A%2F%2Fpng.pngtree.com%2Felement_origin_min_pic%2F16%2F10%2F13%2F2057ff83be1db9c.jpg&imgrefurl=https%3A%2F%2Fpngtree.com%2Ffreepng%2F2018-world-cup-logo-vector_747520.html&docid=zI2guU8FX199bM&tbnid=D2CfZimalb8tIM%3A&vet=10ahUKEwiyxuXNopPfAhUREVAKHaYJBmYQMwhiKAMwAw..i&w=650&h=305&bih=772&biw=1440&q=world%20cup%202018%20png&ved=0ahUKEwiyxuXNopPfAhUREVAKHaYJBmYQMwhiKAMwAw&iact=mrc&uact=8" width="950" height="400" />
 
 
 
