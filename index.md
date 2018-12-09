@@ -4,7 +4,7 @@
 <img src="images/overpic.png" width="980" height="500" />
 <figcaption class="credit">
     <span>
-        	        Image by Jason Jenkins
+        	        Image by Fifa.com
 	            </span>
   </figcaption>
 
