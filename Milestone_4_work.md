@@ -9,51 +9,13 @@ nav_include: 3
 *  
 {: toc}
 
-#World cup 2018 prediction-Exploratory Data Analysis(Group 3)
+# World cup 2018 prediction-Exploratory Data Analysis(Group 3)
 
 
 
 
 
-```
 
-import numpy as np
-import pandas as pd
-import statsmodels.api as sm
-from statsmodels.api import OLS
-from sklearn.decomposition import PCA
-from sklearn.linear_model import LogisticRegression
-from sklearn.linear_model import LogisticRegressionCV
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import cross_val_score
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import KFold
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import confusion_matrix
-import requests
-from io import BytesIO
-from pandas.plotting import scatter_matrix
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.neural_network import MLPClassifier
-import math
-from scipy.special import gamma
-from bs4 import BeautifulSoup
-import bs4 as bs
-import matplotlib
-import matplotlib.pyplot as plt
-%matplotlib inline
-import datetime
-from dateutil import relativedelta as rdelta
-import seaborn as sns
-sns.set()
-from IPython.display import display
-from scipy.stats import norm
-```
 
 
 #WC 2018 Participating teams and players data to be used throughout  our work<a id ='Teamdanalysis'></a>
