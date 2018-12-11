@@ -53,7 +53,8 @@ Logo since these are not significant for the prediction of outcome.
 string with currency type and millions or thousands sign. We removed the currency symbols
 and transformed it to an integer.
 - FIFA World Cup started in the year 1930, so the International Results dataset dates to 1930.
-However for our analysis, the data is retained to 1990.
+However for our analysis, we used the results from 1990 onwards.
 - Numerical variables are of different scales; so in order to compare them they were
 standardized.
 - To handle missing data we imputed the mean of the columns where they were missing.
+- The ranking scraped from FIFA.com contained iran and south korea under different names and so we changed back their names.
