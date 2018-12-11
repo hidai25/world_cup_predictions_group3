@@ -1,4 +1,4 @@
 ---
 title: Conclusion and Summary
-nav_include: 8
+nav_include: 7
 ---
