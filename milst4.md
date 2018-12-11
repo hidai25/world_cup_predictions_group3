@@ -3347,19 +3347,6 @@ Best depth: 18
 
 
 
-
-
-```
-staged_scores_test1_array = np.array(staged_scores_test1)
-
-for i, depth_scores in enumerate(staged_scores_test1_array):
-  depth = i+1
-  idx = (np.argmax(depth_scores))
-  print("Depth = {}: best train set accuracy at {} estimators.".format(depth, idx+1))
-  print("train set accuracy score: {}\n".format(depth_scores[idx]))
-```
-
-
     Depth = 1: best test set 1 accuracy at 1 estimators.
     train set accuracy score: 0.6041666666666666
 
@@ -3389,9 +3376,9 @@ for i, depth_scores in enumerate(staged_scores_test1_array):
 
 
 
-##*** Neural Networks - Second Model ***
+## Neural Networks - Second Model
 
-###** Training Data Set  **
+### Training Data Set
 
 
 
@@ -3418,7 +3405,7 @@ for i, depth_scores in enumerate(staged_scores_test1_array):
 
 
 
-###*** World Cup 2018 - Group  Phase games ***
+### World Cup 2018 - Group  Phase games
 
 
 
@@ -3432,7 +3419,7 @@ for i, depth_scores in enumerate(staged_scores_test1_array):
   test set 2 accuracy score is:  0.4375
 
 
-#*** Model Comparison on Accuracies - Second Models***
+# Model Comparison on Accuracies - Second Models
 
 In this section:
 - We compared the Training and Validation Accuracies of all the models tried in both with FIFA Ranking and non-FIFA Rankings
