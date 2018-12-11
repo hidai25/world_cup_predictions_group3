@@ -1460,23 +1460,6 @@ In this Section we apply 5-fold Cross Validation to all the models designed abov
 </div>
 
 
-### Coefficient analysis-Logistic regression
-
-
-
-![png](milst4_files/milst4_116_1.png)
-
-
-
-
-    <Container object of 1 artists>
-
-
-
-
-![png](milst4_files/milst4_117_1.png)
-
-
 
 # Second Model built with non FIFA - Ranking Features
 
