@@ -21,106 +21,19 @@ In this section, we display the results of our baseline model and we look for th
 
 
 
-```
-# encapsulate performance measures in functions
-
-def train_acc_score(model):
-    return round(np.mean(cross_val_score(model,x_train,y_train,cv=k_fold,scoring="accuracy")),4)
-
-def test_acc_score(model):
-    return round(accuracy_score(y_test, model.predict(x_test)),4)
-
-def train_prec_score(model):
-    return round(precision_score(y_train,model.predict(x_train),average='macro'),4)
-
-def test_prec_score(model):
-    return round(precision_score(y_test,model.predict(x_test),average='macro'),4)
-
-```
-
-
-
-
-```
-# function used in order to get the a confusion matrix of the classifcation model used
-def confusion_matrix_model(model_used,x,y):
-    cm=confusion_matrix(y,model_used.predict(x))
-    col=["Predicted Draw","Predicted Team 1","Predicted Team 2"]
-    cm=pd.DataFrame(cm)
-    cm.columns=col
-    cm.index=["Actual Draw","Actual Team 1","Actual Team 2"]
-    return cm.T
-
-def confusion_matrix_model_knockout(model_used,x,y):
-    cm=confusion_matrix(y,knockout_test(model_used,x))
-    col=["Predicted Team 1","Predicted Team 2"]
-    cm=pd.DataFrame(cm)
-    cm.columns=col
-    cm.index=["Actual Team 1","Actual Team 2"]
-    return cm.T
-```
-
-
-
-
-```
-# function used  in order to merge the x and y_train sets with the features data frame and then give it to the model
-
-def prepare_data(x_train,y_train,result):
-
-    x1 = np.array(result.loc[x_train['home_team']])   # Match each home team game to it's stats
-    x2 = np.array(result.loc[x_train['away_team']])   # Match each away team game to its stats
-    y = np.zeros_like(y_train.values)
-    y[y_train.values == 'Draw'] = 0   #Build the classfication
-    y[y_train.values == x_train['home_team'].values] = 1
-    y[y_train.values == x_train['away_team'].values] = 2
-    y = np.array(y,dtype=np.float64)
-    x = np.hstack((x1,x2))     # Overall dataset made of 138 predictors. 69 of the same for each team
-    return x,y
-
-```
 
 
 ## Classification methods
 
 
 
-```
-# function to get the observed versus predicted values
-def encoder(ypred,y_train,x_train):
-    ypred_label = list()
-    k = 0
-    for y in ypred:
-        if y == 1:
-            ypred_label.append(x_train['home_team'].values[k])
-        elif y == 0:
-            ypred_label.append('Draw')
-        else:
-            ypred_label.append(x_train['away_team'].values[k])
-        k += 1
-    return pd.DataFrame({'Predicted':ypred_label,'Observed':y_train.values})
-```
 
 
-##Logisitic regression - Baseline model
+## Logisitic regression - Baseline model
 
 
-
-```
 # finding top 2 components
-var_explained = []
-total_comp = 12
-x,y = prepare_data(x_train,y_train,result3_std)
-pca = PCA(n_components = total_comp).fit(x)
 
-plt.plot(np.linspace(1, total_comp, total_comp), np.cumsum(pca.explained_variance_ratio_))
-plt.xlabel('number of components')
-plt.ylabel('variance explained')
-plt.title('Cumulative variance explained',fontsize=15)
-
-print("number of components that explain at least 90% of the variance=",\
-    len(np.where(np.cumsum(pca.explained_variance_ratio_)<=0.9)[0])+1)
-```
 
 
     number of components that explain at least 90% of the variance= 8
@@ -130,20 +43,7 @@ print("number of components that explain at least 90% of the variance=",\
 ![png](milst4_files/milst4_54_1.png)
 
 
-###train set
-
-
-
-```
-# fit the logistic regression model
-reg3 = LogisticRegression(penalty='l2',multi_class='multinomial', solver='lbfgs', random_state=123456)
-x,y = prepare_data(x_train,y_train,result3_std)
-reg3.fit(x,y)
-ypredml1 = reg3.predict(x)
-df_pred_mat_lr = confusion_matrix_model(reg3,x,y)
-display("conf matrix of logisitic regression",df_pred_mat_lr)
-print("accuracy score or the model logistic regression multinomial model is:",accuracy_score(ypredml1,y))
-```
+### train set
 
 
 
@@ -202,27 +102,6 @@ print("accuracy score or the model logistic regression multinomial model is:",ac
 
 
 ### test set
-
-
-
-```
-# test set code
-x,y = prepare_data(x_test1,y_test1,result3_std)
-ypredml1_test = reg3.predict(x)
-df_predml1_test = encoder(ypredml1_test,y_test1,x_test1)
-display(df_predml1_test.head())
-df_pred_light_lr_test = confusion_matrix_model(reg3,x,y)
-display("conf matrix of logisitic regression of the baseline model on the first test set",df_pred_light_lr_test)
-print("accuracy score or the model logistic regression multinomial model on test set 1 is:",accuracy_score(ypredml1_test,y))
-
-x,y = prepare_data(x_test2,y_test2,result3_std)
-df_predml1_test2 = knockout_test(reg3,x)
-df_pred_light_lr_test2 = confusion_matrix_model_knockout(reg3,x,y)
-display("conf matrix of logistic gression of the baseline model of the second test set",df_pred_light_lr_test2)
-print("accuracy score or the baseline model with logistic regression on test set 2 is:",accuracy_score(df_predml1_test2,y))
-```
-
-
 
 <div>
 <style scoped>
@@ -333,7 +212,7 @@ print("accuracy score or the baseline model with logistic regression on test set
 
 
 
-    'conf matrix of logistic gression of the baseline model of the second test set'
+    'conf matrix of logistic regression of the baseline model of the second test set'
 
 
 
@@ -378,49 +257,16 @@ print("accuracy score or the baseline model with logistic regression on test set
     accuracy score or the baseline model with logistic regression on test set 2 is: 0.625
 
 
-##KNN - baseline model
+## KNN - baseline model
 
-
-
-```
 #Pick the best k of the model
-max_score = 0
-best_k = 0
-x,y = prepare_data(x_train,y_train,result3_std)
-for k in range(5,26):
-    KNN3 = KNeighborsClassifier(n_neighbors = k, weights='uniform')
-    score = cross_val_score(KNN3, x, y ,cv=5, scoring='accuracy').mean()
-    if score > max_score:
-        best_k = k
-        max_score = score
 
-print( 'Best K is ' + str(best_k) +'.')
-```
 
 
     Best K is 5.
 
 
 ###train set
-
-
-
-```
-# fit knn
-KNN3=KNeighborsClassifier(n_neighbors=best_k,p=1,weights='uniform')
-
-KNN3.fit(x,y)
-#make predictions
-ypredml3 = KNN3.predict(x)
-#use confusion matrix function
-df_pred_mat_knn = confusion_matrix_model(KNN3,x,y)
-display("conf matrix of the KNN model of the train set on the baseline model",df_pred_mat_knn)  
-print("accuracy score of the knn model of the train set on the baseline model:",accuracy_score(ypredml3,y))  
-
-x,y = prepare_data(x_train,y_train,result3_std)
-print("accuracy score of the knn model Validation Set on the baseline model:",cross_val_score(KNN3,x,y,cv=10).mean())
-```
-
 
 
     'conf matrix of the KNN model of the train set on the baseline model'
@@ -480,19 +326,6 @@ print("accuracy score of the knn model Validation Set on the baseline model:",cr
 
 ### World Cup 2018 - Group  Phase games
 
-
-
-```
-# test set code
-x,y = prepare_data(x_test1,y_test1,result3_std)
-ypredml3_test = KNN3.predict(x)
-df_predml3_test = encoder(ypredml3_test,y_test1,x_test1)
-display(df_predml3_test.head())
-df_pred_light_KNN_test = confusion_matrix_model(KNN3,x,y)
-display("conf matrix of KNN of the baseline model on the first test set",df_pred_light_KNN_test)
-print("accuracy score or the baseline model with KNN on the first test set is:",accuracy_score(ypredml3_test,y))
-
-```
 
 
 
@@ -605,23 +438,6 @@ print("accuracy score or the baseline model with KNN on the first test set is:",
 
 
 ### World Cup 2018 - Knockout Games
-
-
-
-```
-x,y = prepare_data(x_test2,y_test2,result3_std)
-
-KNN3=KNeighborsClassifier(n_neighbors=best_k,p=1,weights='uniform')
-KNN3.fit(x,y)
-ypredml3_test2 = knockout_test(KNN3,x)
-# print(min(y),max(y),min(ypredml3_test2),max(ypredml3_test2))
-df_pred_light_KNN_test2 = confusion_matrix_model_knockout(KNN3,x,y)
-display("conf matrix of KNN of the baseline model on the second test set",df_pred_light_KNN_test2)
-print("accuracy score or the baseline model with KNN on second  test set is:",accuracy_score(ypredml3_test2,y))
-
-
-```
-
 
 
     'conf matrix of KNN of the baseline model on the second test set'
