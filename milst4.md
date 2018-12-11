@@ -1,28 +1,13 @@
 
-# <img style="float: left; padding-right: 10px; width: 45px" src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png"> CS109A Introduction to Data Science: 
-
-
-## Final Project :  World Cup 2018 Predictions 
-
-
-**Harvard University**<br/>
-**Fall 2018**<br/>
-**Instructors**: Pavlos Protopapas, Kevin Rader<br/>
-**Group 3**: Hidai Bar-Mor, Anitha L. Srinivasan, Yves Tegaboue<br/>
-
-
-<hr style="height:2pt">
-
-
-
-#World cup 2018 prediction-Exploratory Data Analysis
-
-
+---
+title: Results
+nav_include: 6
+---
 
 
 
 ```
-#RUN THIS CELL 
+#RUN THIS CELL
 import requests
 from IPython.core.display import HTML
 styles = requests.get("https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css").text
@@ -35,57 +20,57 @@ HTML(styles)
 
 <style>
 blockquote { background: #AEDE94; }
-h1 { 
+h1 {
     padding-top: 25px;
     padding-bottom: 25px;
-    text-align: left; 
+    text-align: left;
     padding-left: 10px;
-    background-color: #DDDDDD; 
+    background-color: #DDDDDD;
     color: black;
 }
-h2 { 
+h2 {
     padding-top: 10px;
     padding-bottom: 10px;
-    text-align: left; 
+    text-align: left;
     padding-left: 5px;
-    background-color: #EEEEEE; 
+    background-color: #EEEEEE;
     color: black;
 }
 
 div.exercise {
 	background-color: #ffcccc;
 	border-color: #E9967A; 	
-	border-left: 5px solid #800080; 
+	border-left: 5px solid #800080;
 	padding: 0.5em;
 }
 div.theme {
 	background-color: #DDDDDD;
 	border-color: #E9967A; 	
-	border-left: 5px solid #800080; 
+	border-left: 5px solid #800080;
 	padding: 0.5em;
 	font-size: 18pt;
 }
-div.gc { 
+div.gc {
 	background-color: #AEDE94;
 	border-color: #E9967A; 	 
-	border-left: 5px solid #800080; 
+	border-left: 5px solid #800080;
 	padding: 0.5em;
 	font-size: 12pt;
 }
-p.q1 { 
+p.q1 {
     padding-top: 5px;
     padding-bottom: 5px;
-    text-align: left; 
+    text-align: left;
     padding-left: 5px;
-    background-color: #EEEEEE; 
+    background-color: #EEEEEE;
     color: black;
 }
 header {
    padding-top: 35px;
     padding-bottom: 35px;
-    text-align: left; 
+    text-align: left;
     padding-left: 10px;
-    background-color: #DDDDDD; 
+    background-color: #DDDDDD;
     color: black;
 }
 </style>
@@ -154,9 +139,9 @@ from keras.optimizers import SGD
     Using TensorFlow backend.
 
 
-##List of National Teams qualifed to the FIFA World Cup 2018 and List of players<a id ='Teamdanalysis'></a> 
+##List of National Teams qualifed to the FIFA World Cup 2018 and List of players<a id ='Teamdanalysis'></a>
 
-In this section, we scrape the list of the 32 National Teams participating in the FIFA World Cup 2018 and the list of the 23 players belonging to each team 
+In this section, we scrape the list of the 32 National Teams participating in the FIFA World Cup 2018 and the list of the 23 players belonging to each team
 
 
 
@@ -178,13 +163,13 @@ CL_list = []
 top_node = CL_soup.find("th", attrs={"width": "200"})
 
 next_link = top_node.find_next('a')  # get the first link in the node
-for i in range(78):  # getting through the next 78 links 
+for i in range(78):  # getting through the next 78 links
     next_link = next_link.find_next('a')  # retrieve the next link
     CL_team = next_link.text.strip('\n')  # Strip all junk character
-    if CL_team and '[' not in CL_team:  # Condition to make sure that the link is an actual team 
-        CL_list.append(CL_team)  # Add the team to the champions league team 
+    if CL_team and '[' not in CL_team:  # Condition to make sure that the link is an actual team
+        CL_list.append(CL_team)  # Add the team to the champions league team
 
-        
+
 cup_date = datetime.datetime(2018, 7, 1, 0, 0, 0)
 country_tables = squad_soup.findAll("table", attrs={"class": "sortable wikitable plainrowheaders"})
 starlist = []
@@ -194,7 +179,7 @@ top_league_country = ['France', 'Italy', 'Germany', 'England', 'Spain']   #List 
 
 for country_table in country_tables:
     players = country_table.findAll("th", attrs={"scope": "row"})
-        
+
     for name in players:
         d = dict()
         d['name'] = name.find('a').text.strip('\n')
@@ -203,7 +188,7 @@ for country_table in country_tables:
         rawbday = name.find_next_sibling()
         bday = datetime.datetime.strptime(rawbday.find('span',attrs={'class':'bday'}).text.strip('\n'), '%Y-%m-%d')
         age = rdelta.relativedelta(cup_date,bday).years
-        
+
         d['age'] = age
         caps = rawbday.find_next_sibling()
         d['caps'] = caps.text.strip('\n')
@@ -212,16 +197,16 @@ for country_table in country_tables:
         country = goals.find_previous('h3').find('span').text.strip('\n')
         club = goals.find_next('a').find_next('a').text.strip('\n')   # Retrieve the club information of the player
         if caps.find_next('a')['title'] in top_league_country:  #Check if the Club is in Top5 leagues
-            top_league = 1  # If yes, CLub in Top 5 league 
-        else: 
+            top_league = 1  # If yes, CLub in Top 5 league
+        else:
             top_league = 0  # Club isn't in top 5 league
         d['country'] = country
         d['club'] = club  # Add the club Name of the player in the DataFrame
-        d['Top League'] = top_league # Add the player in Top 5 League or Not. 
-        
+        d['Top League'] = top_league # Add the player in Top 5 League or Not.
+
         if club in CL_list:  # Check if the club played champions league
             CL_league = 1
-        else: 
+        else:
             CL_league = 0
         d['CL League 2017-2018'] = CL_league # add Champions league 2017/2018 to the data frame
         starlist.append(d)
@@ -401,9 +386,9 @@ list_of_players=df_players['name']
 </div>
 
 
-###First List of Predictors 
+###First List of Predictors
 
-First Predictiors includes : 
+First Predictiors includes :
 
 1- Goals: Number of Goals scored by each team
 
@@ -411,7 +396,7 @@ First Predictiors includes :
 
 3- Caps: Average number of Caps per team
 
-4- Top League: Number of Players playing in the top 5 soccer league in the world 
+4- Top League: Number of Players playing in the top 5 soccer league in the world
 
 5- CL League 17-18: Number of players in the national that played in the champions league 2017-2018
 
@@ -517,11 +502,11 @@ players_features.head()
 
 
 
-##Cleaning and Preparation of Training data set 
+##Cleaning and Preparation of Training data set
 
-In this section: 
+In this section:
 
-- We import the dataset from Kaggle of all the games; 
+- We import the dataset from Kaggle of all the games;
 - We filtered the data to only include the national team  qualified for the world Cup 2018
 - We Clean the data
 
@@ -1472,12 +1457,12 @@ y_train = df_natteam['winning_team']
 
 ### we perform k-fold cross validation to select the best parameters for each model based on some criteria.
 
-## Cleaning and Preparation of the Test data set 
+## Cleaning and Preparation of the Test data set
 
-In this section: 
+In this section:
 
-- We scrap the information about the 64 games played in the World Cup 2018 and thier outcome 
-- We separate the group phase games and the knockout phase games 
+- We scrap the information about the 64 games played in the World Cup 2018 and thier outcome
+- We separate the group phase games and the knockout phase games
 
 
 
@@ -1495,13 +1480,13 @@ away_country = []
 round_number = []
 for row in rows_match:
     tds = row.findAll('td')
-    
+
     round_number.append(tds[0].text)
-    
+
     home_country.append(tds[3].text)
-    
+
     away_country.append(tds[4].text)
-    
+
     score.append(tds[6].text)
 ```
 
@@ -1611,14 +1596,14 @@ def knockout_test(model,x):
   # the rest of the models can use probability
   else:
     ypred = model.predict_proba(x)
-    
+
   winners = np.argmax(ypred,axis=1)
   draw = np.argmax(ypred,axis=1)==0
   # take care of an occurence of a draw predicted result- the hack
   if draw.any():
     draw_winners = np.argmax(ypred[draw,1:])+1
     winners[draw]=draw_winners
-  
+
   return winners
 
 ```
@@ -1626,11 +1611,11 @@ def knockout_test(model,x):
 
 ##Feature engineering of baseline model
 
-In this section: 
+In this section:
 
 *   We built the feature by retrieving the outcome of the last 20 games played
-*   We scraped the information about each of the coaches' salary 
-* We retrieve the FIFA Ranking before the beginning of the World Cup 2018 
+*   We scraped the information about each of the coaches' salary
+* We retrieve the FIFA Ranking before the beginning of the World Cup 2018
 
 
 
@@ -1648,13 +1633,13 @@ ranking_soup = BeautifulSoup(fifa_page.text, "html.parser")
 ranking_table = ranking_soup.findAll("tbody")
 
 ranking_list=[]
-        
+
 for rank in ranking_table:
   ranked_countries = rank.findAll('tr')
-  
+
   for c in ranked_countries:
     di = dict()
-    
+
     ranking = c.find('td',attrs={'class':"fi-table__td fi-table__rank"}).text
     di['ranking'] = ranking
     di['country_ranked_06/18']=c.find('a',attrs={'class':"fi-t__link"}).find('span',attrs={'class':"fi-t__nText"}).text
@@ -1885,19 +1870,19 @@ df_wins.head()
 
 
 ```
-# Function to get the Original Country of Coach and his/her age 
-import datetime 
+# Function to get the Original Country of Coach and his/her age
+import datetime
 import time
-now = datetime.datetime.now()  # Import the datetime  library 
+now = datetime.datetime.now()  # Import the datetime  library
 
 def coach_info(url):
     page = requests.get(url)
-    soup = BeautifulSoup(page.text, "html.parser")  # Parse the passed URL 
-    
-    
+    soup = BeautifulSoup(page.text, "html.parser")  # Parse the passed URL
+
+
     nodes = soup.select('div.fi-p__profile-text--uppercase')  # Select the div necessary for scrapping values
-    age = now.year - int(nodes[0].find('span').text.strip()[-4:])  # Extract the age of the coach 
-    nationality = nodes[1].find('span').text.strip()  # extract the nationality of the coach 
+    age = now.year - int(nodes[0].find('span').text.strip()[-4:])  # Extract the age of the coach
+    nationality = nodes[1].find('span').text.strip()  # extract the nationality of the coach
     return (age, nationality)
 ```
 
@@ -1905,7 +1890,7 @@ def coach_info(url):
 
 
 ```
-# Get the list for all coaches for the world cup, their age, original country 
+# Get the list for all coaches for the world cup, their age, original country
 
 
 ROOT = "https://www.fifa.com"
@@ -1916,7 +1901,7 @@ coach_soup = BeautifulSoup(coach_page.text, "html.parser") # Parse the page.text
 salary_page = requests.get("http://www.footballwood.in/salary-every-coach-in-2018-fifa-world-cup.html") # URL to get salary for coaches
 salary_soup = BeautifulSoup(salary_page.text, "html.parser")
 
-# Get list of coaches salary and their country 
+# Get list of coaches salary and their country
 coach_dict = {}
 salary_nodes = salary_soup.findAll('tr')
 for i in range(1,len(salary_nodes)):
@@ -1924,32 +1909,32 @@ for i in range(1,len(salary_nodes)):
     if pays == 'Iran': pays = 'IR Iran'
     if pays == 'South Korea': pays = 'Korea Republic'
     salaire = salary_nodes[i].findNext('td').findNext('td').findNext('td').findNext('td').text.strip('£')   
-    if salaire[-1] == 'm': 
+    if salaire[-1] == 'm':
         salary = float(salaire.strip('m')) * 1000000
     else:
         salary = float(salaire.replace(',', ''))
     coach_dict[pays] = salary
- 
-    
+
+
 #ranking_table = ranking_soup.findAll("tbody")
 
 def parse_coach (soup: BeautifulSoup):
-    
+
     coachlist = []  #List to save the coaches
     teamlist = []  #list of save the team
-    
+
     coach_nodes = soup.select('div.fi-p__name')   # Narrow to div containing the coach names
-    team_nodes = soup.select('div.fi-p__country') # Narrow to div contaning the coach's team 
+    team_nodes = soup.select('div.fi-p__country') # Narrow to div contaning the coach's team
     detail_nodes = soup.select('div.col-sm-3')    # Get the href for the Coach information
     for i in range(len(coach_nodes)):
         dictionaire = {}  # dictionaire to save the coach and the team he/she corresponds to
-        dictionaire['country'] = team_nodes[i].text.strip() # Get the country name for the coach 
+        dictionaire['country'] = team_nodes[i].text.strip() # Get the country name for the coach
         dictionaire['coach'] = coach_nodes[i].text.strip() # Get the coach corresponding to the country
-        dictionaire['coach age'], dictionaire['nationality'] = coach_info(ROOT+detail_nodes[i].find('a').attrs['href']) # Get age and nationality of the coach 
+        dictionaire['coach age'], dictionaire['nationality'] = coach_info(ROOT+detail_nodes[i].find('a').attrs['href']) # Get age and nationality of the coach
         dictionaire['Coach Salary'] = coach_dict[team_nodes[i].text.strip()]
 #         time.sleep(2)
         coachlist.append(dictionaire)
-        
+
     return coachlist
 ```
 
@@ -2047,7 +2032,7 @@ In this section we create dataframe to be used to create and train our model
 
 
 ```
-#Data set with Few predictor focused on Fifa Ranking 
+#Data set with Few predictor focused on Fifa Ranking
 result3 = pd.merge(df_wins, players_features, on='country')
 result3 = pd.merge(result3,df_ranking, on='country')
 result3 = pd.merge(result3,df_coaches, on='country')
@@ -2275,7 +2260,7 @@ bplot4=result3.boxplot(column=['Coach Salary'],figsize=(2,4),
 
 ```
 plt.figure(figsize=(9,5))
-sns.heatmap(result3_std.corr(),annot=True) 
+sns.heatmap(result3_std.corr(),annot=True)
 ```
 
 
@@ -2292,13 +2277,13 @@ sns.heatmap(result3_std.corr(),annot=True)
 
 ##Results of our baseline model
 
-In this section, we display the results of our baseline model and we look for the best Hyper paramters for each model tried. The model to be tried include: 
+In this section, we display the results of our baseline model and we look for the best Hyper paramters for each model tried. The model to be tried include:
 
-- Mutinomial logistic Regression 
-- kNN 
+- Mutinomial logistic Regression
+- kNN
 - Decision Tree
-- Linear Discriminant Analysis / Quadratic Linear Discriminant Analysis 
-- Random Forest 
+- Linear Discriminant Analysis / Quadratic Linear Discriminant Analysis
+- Random Forest
 - Neural Network
 
 
@@ -2351,7 +2336,7 @@ def confusion_matrix_model_knockout(model_used,x,y):
 
 def prepare_data(x_train,y_train,result):
 
-    x1 = np.array(result.loc[x_train['home_team']])   # Match each home team game to it's stats 
+    x1 = np.array(result.loc[x_train['home_team']])   # Match each home team game to it's stats
     x2 = np.array(result.loc[x_train['away_team']])   # Match each away team game to its stats
     y = np.zeros_like(y_train.values)
     y[y_train.values == 'Draw'] = 0   #Build the classfication
@@ -2360,7 +2345,7 @@ def prepare_data(x_train,y_train,result):
     y = np.array(y,dtype=np.float64)
     x = np.hstack((x1,x2))     # Overall dataset made of 138 predictors. 69 of the same for each team
     return x,y
-  
+
 ```
 
 
@@ -2424,7 +2409,7 @@ x,y = prepare_data(x_train,y_train,result3_std)
 reg3.fit(x,y)
 ypredml1 = reg3.predict(x)
 df_pred_mat_lr = confusion_matrix_model(reg3,x,y)
-display("conf matrix of logisitic regression",df_pred_mat_lr) 
+display("conf matrix of logisitic regression",df_pred_mat_lr)
 print("accuracy score or the model logistic regression multinomial model is:",accuracy_score(ypredml1,y))
 ```
 
@@ -2495,13 +2480,13 @@ ypredml1_test = reg3.predict(x)
 df_predml1_test = encoder(ypredml1_test,y_test1,x_test1)
 display(df_predml1_test.head())
 df_pred_light_lr_test = confusion_matrix_model(reg3,x,y)
-display("conf matrix of logisitic regression of the baseline model on the first test set",df_pred_light_lr_test) 
+display("conf matrix of logisitic regression of the baseline model on the first test set",df_pred_light_lr_test)
 print("accuracy score or the model logistic regression multinomial model on test set 1 is:",accuracy_score(ypredml1_test,y))
 
 x,y = prepare_data(x_test2,y_test2,result3_std)
 df_predml1_test2 = knockout_test(reg3,x)
 df_pred_light_lr_test2 = confusion_matrix_model_knockout(reg3,x,y)
-display("conf matrix of logistic gression of the baseline model of the second test set",df_pred_light_lr_test2) 
+display("conf matrix of logistic gression of the baseline model of the second test set",df_pred_light_lr_test2)
 print("accuracy score or the baseline model with logistic regression on test set 2 is:",accuracy_score(df_predml1_test2,y))
 ```
 
@@ -2668,7 +2653,7 @@ print("accuracy score or the baseline model with logistic regression on test set
 ```
 #Pick the best k of the model
 max_score = 0
-best_k = 0 
+best_k = 0
 x,y = prepare_data(x_train,y_train,result3_std)
 for k in range(5,26):
     KNN3 = KNeighborsClassifier(n_neighbors = k, weights='uniform')
@@ -2676,7 +2661,7 @@ for k in range(5,26):
     if score > max_score:
         best_k = k
         max_score = score
- 
+
 print( 'Best K is ' + str(best_k) +'.')
 ```
 
@@ -2761,7 +2746,7 @@ print("accuracy score of the knn model Validation Set on the baseline model:",cr
     accuracy score of the knn model Validation Set on the baseline model: 0.5518964059749552
 
 
-### World Cup 2018 - Group  Phase games 
+### World Cup 2018 - Group  Phase games
 
 
 
@@ -2772,7 +2757,7 @@ ypredml3_test = KNN3.predict(x)
 df_predml3_test = encoder(ypredml3_test,y_test1,x_test1)
 display(df_predml3_test.head())
 df_pred_light_KNN_test = confusion_matrix_model(KNN3,x,y)
-display("conf matrix of KNN of the baseline model on the first test set",df_pred_light_KNN_test) 
+display("conf matrix of KNN of the baseline model on the first test set",df_pred_light_KNN_test)
 print("accuracy score or the baseline model with KNN on the first test set is:",accuracy_score(ypredml3_test,y))
 
 ```
@@ -2887,7 +2872,7 @@ print("accuracy score or the baseline model with KNN on the first test set is:",
     accuracy score or the baseline model with KNN on the first test set is: 0.5
 
 
-### World Cup 2018 - Knockout Games 
+### World Cup 2018 - Knockout Games
 
 
 
@@ -2899,7 +2884,7 @@ KNN3.fit(x,y)
 ypredml3_test2 = knockout_test(KNN3,x)
 # print(min(y),max(y),min(ypredml3_test2),max(ypredml3_test2))
 df_pred_light_KNN_test2 = confusion_matrix_model_knockout(KNN3,x,y)
-display("conf matrix of KNN of the baseline model on the second test set",df_pred_light_KNN_test2) 
+display("conf matrix of KNN of the baseline model on the second test set",df_pred_light_KNN_test2)
 print("accuracy score or the baseline model with KNN on second  test set is:",accuracy_score(ypredml3_test2,y))
 
 
@@ -3008,8 +2993,8 @@ plt.title("Accuracy Scores vs. Maximum Tree Depth on Decision Tree Classifier, T
 
 
 ```
-best_index = tree_scores_df['CV Mean Accuracy'].idxmax() 
-best_depth = tree_scores_df['Depth'][best_index] 
+best_index = tree_scores_df['CV Mean Accuracy'].idxmax()
+best_depth = tree_scores_df['Depth'][best_index]
 
 tree_clf = DecisionTreeClassifier(max_depth=best_depth).fit(x,y)
 best_depth
@@ -3025,7 +3010,7 @@ best_depth
 
 ##Linear Discriminant Analysis (LDA)-Baseline model
 
-### Train Data Set 
+### Train Data Set
 
 
 
@@ -3175,7 +3160,7 @@ print("accuracy score of the lda model Validation Set:",cross_val_score(lda,x,y,
     accuracy score of the lda model Validation Set: 0.5247027017801897
 
 
-### World Cup 2018 - Knockout Games 
+### World Cup 2018 - Knockout Games
 
 
 
@@ -3345,7 +3330,7 @@ print("accuracy score of the qda model Validation Set:",cross_val_score(qda,x,y,
     accuracy score of the qda model Validation Set: 0.5103846653394701
 
 
-### World Cup 2018 - Knockout Games 
+### World Cup 2018 - Knockout Games
 
 
 
@@ -3368,10 +3353,10 @@ print("accuracy score of qda baseline model on Validation Set:",cross_val_score(
 
 # Ensemble methods
 
-In this section we try different types of Ensembles methods: 
+In this section we try different types of Ensembles methods:
 - Random Forest
-- Bagging 
-- Boosting 
+- Bagging
+- Boosting
 
 ## Random Forest- baseline model
 
@@ -3657,7 +3642,7 @@ display(bagging_test2.head())
 </div>
 
 
-    
+
     test1 bootstrapped table:
 
 
@@ -3830,7 +3815,7 @@ display(bagging_test2.head())
 </div>
 
 
-    
+
     test2 bootstrapped table:
 
 
@@ -4034,27 +4019,27 @@ print("bagging model, test-2 set accuracy:", bagged_accuracy_test2)
 ```
 def running_predictions(prediction_dataset, targets):
     """A function to predict examples' class via the majority among trees (ties are predicted as 0)
-    
+
     Inputs:
       prediction_dataset - a (n_examples by n_sub_models) dataset, where each entry [i,j] is sub-model j's prediction
           for example i
       targets - the true class labels
-    
+
     Returns:
       a vector where vec[i] is the model's accuracy when using just the first i+1 sub-models
     """
-    
+
     n_trees = prediction_dataset.shape[1]
-    
+
     # find the running percentage of models voting 1 as more models are considered
     running_percent_1s = np.cumsum(prediction_dataset, axis=1)/np.arange(1,n_trees+1)
-    
+
     # predict 1 when the running average is above 0.5
     running_conclusions = running_percent_1s > 0.5
-    
+
     # check whether the running predictions match the targets
     running_correctnesss = running_conclusions == targets.reshape(-1,1)
-    
+
     return np.mean(running_correctnesss, axis=0)
     # returns a 1-d series of the accuracy of using the first n trees to predict the targets
 ```
@@ -4135,7 +4120,7 @@ for depth in range(1,5):
   ab_scores_train = list(ab.staged_score(x, y))
   ab_scores_test1 = list(ab.staged_score(xt1, yt1))
   ab_scores_test2 = list(ab.staged_score(xt2, yt2))
-  
+
   staged_scores_train.append(ab_scores_train)
   staged_scores_test1.append(ab_scores_test1)
   staged_scores_test2.append(ab_scores_test2)
@@ -4179,8 +4164,8 @@ for i, depth_scores in enumerate(staged_scores_test_array1):
   idx = (np.argmax(depth_scores))
   print("Depth = {}: best test set 1 accuracy at {} estimators.".format(depth, idx+1))
   print("train set accuracy score: {}\n".format(depth_scores[idx]))
-  
-  
+
+
 for i, depth_scores in enumerate(staged_scores_test_array2):
   depth = i+1
   idx = (np.argmax(depth_scores))
@@ -4191,28 +4176,28 @@ for i, depth_scores in enumerate(staged_scores_test_array2):
 
     Depth = 1: best test set 1 accuracy at 1 estimators.
     train set accuracy score: 0.6041666666666666
-    
+
     Depth = 2: best test set 1 accuracy at 342 estimators.
     train set accuracy score: 0.6041666666666666
-    
+
     Depth = 3: best test set 1 accuracy at 356 estimators.
     train set accuracy score: 0.6041666666666666
-    
+
     Depth = 4: best test set 1 accuracy at 673 estimators.
     train set accuracy score: 0.6666666666666666
-    
+
     Depth = 1: best test set 2 accuracy at 14 estimators.
     train set accuracy score: 0.6875
-    
+
     Depth = 2: best test set 2 accuracy at 38 estimators.
     train set accuracy score: 0.625
-    
+
     Depth = 3: best test set 2 accuracy at 18 estimators.
     train set accuracy score: 0.5625
-    
+
     Depth = 4: best test set 2 accuracy at 51 estimators.
     train set accuracy score: 0.5625
-    
+
 
 
 ##Neural Network
@@ -4243,13 +4228,13 @@ model_nn = Sequential([
 ])
 
 
-model_nn.compile(loss='mean_absolute_error', 
+model_nn.compile(loss='mean_absolute_error',
               optimizer='adam',metrics=['acc'])
 model_nn.summary()
 
-model_nn.fit(x, y_nn, 
-          epochs=10*32, 
-          batch_size=32, 
+model_nn.fit(x, y_nn,
+          epochs=10*32,
+          batch_size=32,
           validation_split=.2,
           verbose=False)
 
@@ -4304,13 +4289,13 @@ model2.add(Dense(30, kernel_initializer='normal', activation='relu', kernel_cons
 model2.add(Dropout(0.2))
 model2.add(Dense(3, kernel_initializer='normal', activation='linear'))
 # Compile model
-  
-model2.compile(loss='mean_absolute_error', 
+
+model2.compile(loss='mean_absolute_error',
               optimizer='adam',metrics=['acc'])
 
-model2.fit(x, y_nn, 
-          epochs=10*32, 
-          batch_size=32, 
+model2.fit(x, y_nn,
+          epochs=10*32,
+          batch_size=32,
           validation_split=.2,
           verbose=False)
 
@@ -4355,7 +4340,7 @@ for value in ypred_proba_nn:
     ypred_nn.append(2)
 
 ypred_nn_test1 = np.array(ypred_nn)
-    
+
 print("The accuracy score of test set 1 of this neural net is:",accuracy_score(ypred_nn_test1,y))
 
 
@@ -4365,7 +4350,7 @@ print("The accuracy score of test set 1 of this neural net is:",accuracy_score(y
     The accuracy score of test set 1 of this neural net is: 0.4583333333333333
 
 
-### World Cup 2018 - Knockout Games 
+### World Cup 2018 - Knockout Games
 
 
 
@@ -4385,7 +4370,7 @@ print("The accuracy score of test set 2 of this neural net is:",accuracy_score(y
 
 # Model comparison
 
-In this Section we apply 7-fold Cross Validation to all the models designed above in order to fund which ones has the best Training and Validation Accuracy 
+In this Section we apply 7-fold Cross Validation to all the models designed above in order to fund which ones has the best Training and Validation Accuracy
 
 
 
@@ -4398,7 +4383,7 @@ for model, label in zip(models, labels):
   cv_score = cross_val_score(model, x, y, scoring='accuracy', cv=7).mean()
   cv_scores.append({'Model': label,
                         'CV_Accuracy': cv_score})
-  
+
 scores_df = pd.DataFrame(cv_scores, columns=['Model', 'CV_Accuracy'])
 scores_df.sort_values(by='CV_Accuracy', ascending=False, inplace=True)
 scores_df.reset_index(drop=True, inplace=True)
@@ -4920,13 +4905,13 @@ def parseValueColumn(strVal):
         return int(float(strVal.replace('K', '')) * 1000)
     else:
         return int(strVal)   
-#parse string for thousands to numeric values 
+#parse string for thousands to numeric values
 def parseWageColumn(strVal):
   if 'K' in strVal:
     return int(float(strVal.replace('K', '')) * 1000)
   else:
     return int(strVal)   
- 
+
 df1_clean['Value'] = df1_clean['Value'].apply(lambda x: parseValueColumn(x))
 df1_clean['Wage']=df1_clean['Wage'].apply(lambda x: parseWageColumn(x))
 ```
@@ -4973,7 +4958,7 @@ df1.isnull().sum()
     GK reflexes               0
     Heading accuracy          0
     Interceptions             0
-                           ... 
+                           ...
     Vision                    0
     Volleys                   0
     CAM                    2029
@@ -6590,7 +6575,7 @@ x,y = prepare_data(x_train,y_train,result2_std)
 reg2.fit(x,y)
 ypredmf1 = reg2.predict(x)
 df_pred_full_lr = confusion_matrix_model(reg2,x,y)
-display("conf matrix of logisitic regression of our model",df_pred_full_lr) 
+display("conf matrix of logisitic regression of our model",df_pred_full_lr)
 print("accuracy score or the model logistic regression multinomial model is:",accuracy_score(ypredmf1,y))
 
 ```
@@ -6662,7 +6647,7 @@ ypredmf1_test = reg2.predict(x)
 df_predmf1_test = encoder(ypredmf1_test,y_test1,x_test1)
 display(df_predmf1_test.head())
 df_pred_full_lr_test = confusion_matrix_model(reg2,x,y)
-display("conf matrix of logisitic regression of our model",df_pred_full_lr_test) 
+display("conf matrix of logisitic regression of our model",df_pred_full_lr_test)
 print("accuracy score of the model logistic regression multinomial model on test set of our model is:",accuracy_score(ypredmf1_test,y))
 ```
 
@@ -6886,7 +6871,7 @@ ypredmf2_test = KNN2.predict(x)
 df_predmf2_test = encoder(ypredmf2_test,y_test1,x_test1)
 display(df_predmf2_test.head())
 df_pred_full_KNN_test = confusion_matrix_model(KNN2,x,y)
-display("conf matrix of KNN of our model",df_pred_full_KNN_test) 
+display("conf matrix of KNN of our model",df_pred_full_KNN_test)
 print("accuracy score or the model KNN model on test set is:",accuracy_score(ypredmf2_test,y))
 ```
 
@@ -7011,7 +6996,7 @@ ypredmf2_test2 = KNN2.predict(x)
 df_predmf2_test2 = encoder(ypredmf2_test2,y_test2,x_test2)
 display(df_predmf2_test2.head())
 df_pred_full_KNN_test2 = confusion_matrix_model_knockout(KNN2,x,y)
-display("conf matrix of KNN of our model",df_pred_full_KNN_test2) 
+display("conf matrix of KNN of our model",df_pred_full_KNN_test2)
 print("accuracy score or the model KNN model on test set is:",accuracy_score(ypredmf2_test2,y))
 ```
 
@@ -7173,7 +7158,7 @@ plt.title("Accuracy Scores vs. Maximum Tree Depth on Decision Tree Classifier, T
 
 
 ```
-best_index = tree_scores_df_om['CV Mean Accuracy'].idxmax() 
+best_index = tree_scores_df_om['CV Mean Accuracy'].idxmax()
 best_depth = tree_scores_df_om['Depth'][best_index]
 
 tree_clf_om = DecisionTreeClassifier(max_depth=best_depth).fit(x,y)
@@ -7198,7 +7183,7 @@ ypred_test_om = tree_clf_om.predict(x)
 df_pred_tree_test = encoder(ypred_test_om,y_test1,x_test1)
 display(df_pred_tree_test.head())
 df_pred_tree_test = confusion_matrix_model(tree_clf_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_tree_test) 
+display("conf matrix of Tree of our own model",df_pred_tree_test)
 print("accuracy score for our own model with Decision Tree on test set is:",accuracy_score(ypred_test_om,y))
 ```
 
@@ -7322,7 +7307,7 @@ ypred_test2_om = tree_clf_om.predict(x)
 df_pred_tree_test2 = encoder(ypred_test2_om,y_test2,x_test2)
 display(df_pred_tree_test2.head())
 df_pred_tree_test2_conf = confusion_matrix_model_knockout(tree_clf_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_tree_test2_conf) 
+display("conf matrix of Tree of our own model",df_pred_tree_test2_conf)
 print("accuracy score for our own model with Decision Tree on test set is:",accuracy_score(ypred_test2_om,y))
 ```
 
@@ -7459,7 +7444,7 @@ ypred_train_ldaom = lda_om.predict(x)
 df_pred_lda_train = encoder(ypred_train_ldaom,y_train,x_train)
 display(df_pred_lda_train.head())
 df_pred_lda_train = confusion_matrix_model(lda_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_lda_train) 
+display("conf matrix of Tree of our own model",df_pred_lda_train)
 print("accuracy score for our own model with LDA  on train is:",accuracy_score(ypred_train_ldaom,y))
 
 ```
@@ -7587,7 +7572,7 @@ ypred_test_ldaom = lda_om.predict(x)
 df_pred_lda_test = encoder(ypred_test_ldaom,y_test1,x_test1)
 display(df_pred_lda_test.head())
 df_pred_lda_test1 = confusion_matrix_model(lda_om,x,y)
-display("conf matrix of lda of our own model on test 1",df_pred_lda_test1.head()) 
+display("conf matrix of lda of our own model on test 1",df_pred_lda_test1.head())
 print("accuracy score for our own model with LDA  on test set 1 is:",accuracy_score(ypred_test_ldaom,y))
 
 #lda test set 2
@@ -7596,7 +7581,7 @@ ypred_test_ldaom = lda_om.predict(x)
 df_pred_lda_test = encoder(ypred_test_ldaom,y_test2,x_test2)
 display(df_pred_lda_test.head())
 df_pred_lda_test = confusion_matrix_model(lda_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_lda_test) 
+display("conf matrix of Tree of our own model",df_pred_lda_test)
 print("accuracy score for our own model with LDA  on test set 2 is:",accuracy_score(ypred_test_ldaom,y))
 
 
@@ -7849,7 +7834,7 @@ ypred_train_qdaom = qda_om.predict(x)
 df_pred_qda_train = encoder(ypred_train_qdaom,y_train,x_train)
 display(df_pred_qda_train.head())
 df_pred_qda_train = confusion_matrix_model(qda_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_qda_train) 
+display("conf matrix of Tree of our own model",df_pred_qda_train)
 print("accuracy score for our own model with QDA  on train is:",accuracy_score(ypred_train_qdaom,y))
 
 ```
@@ -7976,7 +7961,7 @@ ypred_test_qdaom = qda_om.predict(x)
 df_pred_qda_test = encoder(ypred_test_qdaom,y_test1,x_test1)
 display(df_pred_qda_test.head())
 df_pred_qda_test = confusion_matrix_model(qda_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_tree_test) 
+display("conf matrix of Tree of our own model",df_pred_tree_test)
 print("accuracy score for our own model with qda  on test set 1 is:",accuracy_score(ypred_test_qdaom,y))
 
 ```
@@ -8102,7 +8087,7 @@ ypred_test2_qdaom = qda_om.predict(x)
 df_pred_qda_test2 = encoder(ypred_test2_qdaom,y_test2,x_test2)
 display(df_pred_qda_test2.head())
 df_pred_qda_test2 = confusion_matrix_model_knockout(qda_om,x,y)
-display("conf matrix of Tree of our own model",df_pred_qda_test2) 
+display("conf matrix of Tree of our own model",df_pred_qda_test2)
 print("accuracy score for our own model with qda  on test set 2 is:",accuracy_score(ypred_test2_qdaom,y))
 
 
@@ -8197,18 +8182,18 @@ print("accuracy score for our own model with qda  on test set 2 is:",accuracy_sc
 
 
     /usr/local/lib/python3.6/dist-packages/pandas/core/generic.py in _set_axis(self, axis, labels)
-        557 
+        557
         558     def _set_axis(self, axis, labels):
     --> 559         self._data.set_axis(axis, labels)
         560         self._clear_item_cache()
-        561 
+        561
 
 
     /usr/local/lib/python3.6/dist-packages/pandas/core/internals.py in set_axis(self, axis, new_labels)
        3072             raise ValueError('Length mismatch: Expected axis has %d elements, '
        3073                              'new values have %d elements' %
     -> 3074                              (old_len, new_len))
-       3075 
+       3075
        3076         self.axes[axis] = new_labels
 
 
@@ -8225,7 +8210,7 @@ print("accuracy score for our own model with qda  on test set 2 is:",accuracy_sc
 # fit the random forest model and get its accuracy score
 x,y = prepare_data(x_train,y_train,result2_std)
 
-max_rf_score= 0 
+max_rf_score= 0
 index = 0
 for i in range(20):
     model = RandomForestClassifier(n_estimators=100, oob_score=True, max_depth=i+1,random_state=1234)
@@ -8234,7 +8219,7 @@ for i in range(20):
     if (accuracy_score(ypred,y)) > max_rf_score:
         index = i
         max_rf_score = accuracy_score(ypred,y)
-        
+
 
 ```
 
@@ -8508,7 +8493,7 @@ display(bagging_test2_om.head())
 </div>
 
 
-    
+
     test1 bootstrapped table:
 
 
@@ -8681,7 +8666,7 @@ display(bagging_test2_om.head())
 </div>
 
 
-    
+
     test2 bootstrapped table:
 
 
@@ -8931,7 +8916,7 @@ for depth in range(1,5):
   ab_scores_train = list(ab.staged_score(x, y))
   ab_scores_test = list(ab.staged_score(xt, yt))
   ab_scores_test2 = list(ab.staged_score(xt2, yt2))
-  
+
   staged_scores_train.append(ab_scores_train)
   staged_scores_test.append(ab_scores_test)
   staged_scores_test2.append(ab_scores_test2)
@@ -8978,16 +8963,16 @@ for i, depth_scores in enumerate(staged_scores_train_array):
 
     Depth = 1: best train set accuracy at 766 estimators.
     train set accuracy score: 0.5420875420875421
-    
+
     Depth = 2: best train set accuracy at 782 estimators.
     train set accuracy score: 0.6167227833894501
-    
+
     Depth = 3: best train set accuracy at 748 estimators.
     train set accuracy score: 0.6655443322109988
-    
+
     Depth = 4: best train set accuracy at 440 estimators.
     train set accuracy score: 0.6689113355780022
-    
+
 
 
 
@@ -9005,16 +8990,16 @@ for i, depth_scores in enumerate(staged_scores_test1_array):
 
     Depth = 1: best train set accuracy at 1 estimators.
     train set accuracy score: 0.6041666666666666
-    
+
     Depth = 2: best train set accuracy at 342 estimators.
     train set accuracy score: 0.6041666666666666
-    
+
     Depth = 3: best train set accuracy at 356 estimators.
     train set accuracy score: 0.6041666666666666
-    
+
     Depth = 4: best train set accuracy at 673 estimators.
     train set accuracy score: 0.6666666666666666
-    
+
 
 
 
@@ -9032,16 +9017,16 @@ for i, depth_scores in enumerate(staged_scores_test2_array):
 
     Depth = 1: best train set accuracy at 766 estimators.
     train set accuracy score: 0.5420875420875421
-    
+
     Depth = 2: best train set accuracy at 782 estimators.
     train set accuracy score: 0.6167227833894501
-    
+
     Depth = 3: best train set accuracy at 748 estimators.
     train set accuracy score: 0.6655443322109988
-    
+
     Depth = 4: best train set accuracy at 440 estimators.
     train set accuracy score: 0.6689113355780022
-    
+
 
 
 ##*** Neural Networks - Second Model ***
@@ -9072,14 +9057,14 @@ model_nn_om = Sequential([
 ])
 
 #model_nn_om.add(Dropout(0.2))
-model_nn_om.compile(loss='mean_absolute_error', 
+model_nn_om.compile(loss='mean_absolute_error',
               optimizer='adam',metrics=['acc'])
 
 model_nn_om.summary()
 
-model_nn_om.fit(x, y_nn, 
-          epochs=10*32, 
-          batch_size=32, 
+model_nn_om.fit(x, y_nn,
+          epochs=10*32,
+          batch_size=32,
           validation_split=.2,
           verbose=False)
 ```
@@ -9150,7 +9135,7 @@ for value in ypred_proba_nn:
     ypred_nn.append(2)
 
 ypred_nn = np.array(ypred_nn)
-    
+
 print(accuracy_score(ypred_nn,y))
 
 ```
@@ -9188,7 +9173,7 @@ for value in ypred_proba_nn:
     ypred_nn.append(2)
 
 ypred_nn = np.array(ypred_nn)
-    
+
 print(accuracy_score(ypred_nn,y))
 
 ```
@@ -9199,8 +9184,8 @@ print(accuracy_score(ypred_nn,y))
 
 #*** Model Comparison on Accuracies - Second Models***
 
-In this section: 
-- We compared the Training and Validation Accuraries of all the models tried in both with FIFA Ranking and non-FIFA Rankings 
+In this section:
+- We compared the Training and Validation Accuraries of all the models tried in both with FIFA Ranking and non-FIFA Rankings
 
 
 
@@ -9314,7 +9299,7 @@ scores_df
 
 Our analysis of the training set show that random forest is the best model to use for the test set for both the baseline model and the model we developed ourselves
 
-### Baseline Model Test Set Results 
+### Baseline Model Test Set Results
 
 
 
@@ -9370,7 +9355,7 @@ print("accuracy score for the random forest model:",accuracy_score(ypredml2_test
 
 #EDA of our own model data
 
-This section represents all the Explanatory Data Analysis that was done with all the data used on this project 
+This section represents all the Explanatory Data Analysis that was done with all the data used on this project
 
 
 
@@ -9531,4 +9516,3 @@ plt.legend(['Home Team','Away Team'])
 
 
 ![png](milst4_files/milst4_205_1.png)
-

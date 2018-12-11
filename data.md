@@ -20,9 +20,9 @@ from www.sofifa.com (Kaggle), which included all the matched played since 1872 w
 score, was evaluated. The important information for our analysis included in the dataset were the
 team names, their home scores, away scores, city/country in which the match was played, and a
 flag indicating the neutrality of the match(obtained from FIFA.com). From the same dataset
-x_train, a tuplet of the Home and Away team names, and y_train, the outcome of the match
+x_train, containing the Home and Away team names of the match, and y_train, the outcome of the match
 between those two team is computed. y_train is later transformed to 3-class classification where
-class “0” denotes the home team won, class “1” denotes the match result was a draw and “2” if
+class “0” denotes a draw, class “1” denotes the match result where the home team won and “2” if
 the away team won. Also for the x_train was filtered to only the games played after 1990 and to
 the national teams that qualified at the world cup 2018. That gave us a training set of 3564 games
 to train our future models with.
@@ -40,8 +40,8 @@ Methods used to explore the data are as follow:
 - Check the types of data and verify the shape (number of rows and columns).
 - To handle missing values, we imputed the mean of the column in them.
 - Correct mismatch of two team names taken from different sources so that they can both used
-as index and be referred to on a dataframe merge.
-- Added a “winner” column for the international games dataframe to create the y_train
+as index and be referred to on a DataFrame merge.
+- Added a “winner” column for the international games DataFrame to create the y_train
 categorical variable.
 - Dropped unnecessary columns of the data frames such as “Photo&quot; of players,&quot;Flag&quot;,&quot;Club”
 Logo since these are not significant for the prediction of outcome.
@@ -57,4 +57,4 @@ However for our analysis, we used the results from 1990 onwards.
 - Numerical variables are of different scales; so in order to compare them they were
 standardized.
 - To handle missing data we imputed the mean of the columns where they were missing.
-- The ranking scraped from FIFA.com contained iran and south korea under different names and so we changed back their names.
+- The ranking scraped from FIFA.com contained Iran and south Korea under different names and so we changed back their names.
