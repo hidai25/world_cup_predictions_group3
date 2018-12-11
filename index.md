@@ -1,4 +1,7 @@
-
+---
+title: Home
+nav_include: 1
+---
 
 
 <img src="images/overpic.png" width="980" height="500" />
