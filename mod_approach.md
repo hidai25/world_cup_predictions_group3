@@ -22,6 +22,67 @@ the name of the winning team or ‘Draw’ if the outcome was a draw. Multiple m
 Random Forest, Decision Tree, k-NN, LDA and QDA were built on the training set of data. Here’s a
 table of the models and their corresponding accuracies on the validation set.
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>CV_Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Random Forest</td>
+      <td>0.6016</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Decision Tree</td>
+      <td>0.5864</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>KNN</td>
+      <td>0.5404</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LDA</td>
+      <td>0.5205</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>QDA</td>
+      <td>0.5126</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Logistic Regression</td>
+      <td>0.4950</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+Later on we tested our models on ensemble methods and neural networks as well so that we get the best possible accuracy level.
+
+
+
 # Our Model
 
 The second model will be trained on features other than the 6 predictors used in the baseline model.
