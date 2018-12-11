@@ -5,7 +5,6 @@ nav_include: 3
 
 1. Using scraping techniques, data to start the analysis was built. (BeautifulSoup was used for
 scraping the data):
-
 - FIFA rankings were scraped from the official FIFA website (www.fifa.com).
 - The complete squad data detailing countries that qualified for the world cup (32 countries
 in total) and the selected players from each country (23 players in total) were scraped
