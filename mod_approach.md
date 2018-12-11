@@ -79,7 +79,7 @@ table of the models and their corresponding accuracies on the validation set.
 </table>
 </div>
 
-Later on we tested our models on ensemble methods and neural networks as well so that we get the best possible accuracy level.
+Later on, we tested our models on ensemble methods as well so that we get the best possible accuracy level.
 
 
 
@@ -91,7 +91,7 @@ for the away_team). Using feature elimination x predictors were removed to avoid
 remaining predictors, models were built with accuracies as listed in the table below.
 
 For our own model (34 features for each team):
-- Number of players who played in top 5 european league in 2017-2018
+- Number of players who played in top 5 European leagues in 2017-2018
 - Number of players who played in the champions league 2017-2018
 - Average Players Wage
 - Average Players Value

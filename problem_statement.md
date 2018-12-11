@@ -6,7 +6,6 @@ nav_include: 2
 Various sports are played around the world. Fan clubs passionately cheer for their teams. Arguably
 predicting winners at these games is common across sports. Teams that have been winning
 historically or recently have higher chances of winning. However, no consecutive world cup has the
-
 same set of players. Taking into consideration all the data that is available to us, factors that impact
 outcome of games can be determined.
 Objective
@@ -38,7 +37,7 @@ easy to quantify.
 stage are in many cases are not quantifiable
 
 
-<h3>Challenges and Limitations</h3>
+<h2>Challenges and Limitations</h2>
 This problem statement contains factors that the machine-learning model cannot account for. The
 model built will be just as good as the data used to build it, since the data will not represent these
 criteria, our end model will not be able to predict based on these factors either. These variables are
