@@ -27,6 +27,7 @@ class “0” denotes the home team won, class “1” denotes the match result 
 the away team won. Also for the x_train was filtered to only the games played after 1990 and to
 the national teams that qualified at the world cup 2018. That gave us a training set of 3564 games
 to train our future models with.
+
 3. The third data source used was players’ data, which was downloaded from www.sofifa.com. This
 dataset contains all the various attributes about each player (Name, Age, Nationality, Overall,
 Potential, Acceleration, Agility and Balance). We grouped this dataset by the nationality of the
