@@ -485,96 +485,25 @@ In this section, we display the results of our baseline model and we look for th
     accuracy score or the baseline model with KNN on second  test set is: 0.4375
 
 
-##Decision tree-Baseline Model
-
-
-
-```
-x,y = prepare_data(x_train,y_train,result3_std)
-# fitting DecisionTreeClassifier class for depths 1-25, storing results
-tree_cv_scores = []
-for i in range (1,26):
-  clf = DecisionTreeClassifier(criterion='gini', max_depth=i)
-  clf.fit(x, y)
-  train_score = clf.score(x, y)
-  cv_score = cross_val_score(clf, x, y, scoring='accuracy', cv=5)
-#   test_score = clf.score(x_test, y_test)
-  tree_cv_scores.append({'Depth': i,
-                         'Train Score': train_score,
-                        'CV Mean Accuracy': cv_score.mean(),
-                        'CV std.': cv_score.std(),
-#                         'Test Score': test_score
-                        })
-
-columns=['Depth', 'Train Score', 'CV Mean Accuracy', 'CV std.'] # to preserve order
-tree_scores_df = pd.DataFrame(tree_cv_scores, columns=columns)
-
-```
+## Decision tree-Baseline Model
 
 
 
 
-```
-# plot
-num_SD = 2 # number of CV std for plotting
 
-plt.figure(figsize =(10,6))
-plt.plot(tree_scores_df['Depth'], tree_scores_df['Train Score'], label='Training Set Score')
-plt.plot(tree_scores_df['Depth'], tree_scores_df['CV Mean Accuracy'],label='Mean CV Score ',color='green')
-plt.fill_between(
-    tree_scores_df['Depth'],
-    tree_scores_df['CV Mean Accuracy'] -  num_SD * tree_scores_df['CV std.'],
-    tree_scores_df['CV Mean Accuracy'] +  num_SD * tree_scores_df['CV std.'],
-    alpha=.1, color='green')
-
-plt.legend()
-plt.xlabel("Max Tree Depth")
-plt.ylabel("Mean CV Accuracy Score +/- {} SD".format(num_SD))
-plt.title("Accuracy Scores vs. Maximum Tree Depth on Decision Tree Classifier, Training Set");
-```
 
 
 
 ![png](milst4_files/milst4_69_0.png)
 
 
-
-
-```
-best_index = tree_scores_df['CV Mean Accuracy'].idxmax()
-best_depth = tree_scores_df['Depth'][best_index]
-
-tree_clf = DecisionTreeClassifier(max_depth=best_depth).fit(x,y)
-best_depth
-```
+Best depth is 16
 
 
 
-
-
-    16
-
-
-
-##Linear Discriminant Analysis (LDA)-Baseline model
+## Linear Discriminant Analysis (LDA)-Baseline model
 
 ### Train Data Set
-
-
-
-```
-x,y = prepare_data(x_train,y_train,result3_std)
-lda = LinearDiscriminantAnalysis()
-lda.fit(x, y)
-ypredlda3 = lda.predict(x)
-#use confusion matrix function
-df_pred_mat_lda = confusion_matrix_model(lda,x,y)
-display("conf matrix of lda on the baseline model",df_pred_mat_lda)  
-print("accuracy score of lda on baseline model:",accuracy_score(ypredlda3,y))  
-
-x,y = prepare_data(x_train,y_train,result3_std)
-print("accuracy score of lda on baseline model Validation Set:",cross_val_score(lda,x,y,cv=10).mean())
-```
 
 
 
@@ -637,22 +566,6 @@ print("accuracy score of lda on baseline model Validation Set:",cross_val_score(
 
 
 
-```
-x,y = prepare_data(x_test1,y_test1,result3_std)
-lda = LinearDiscriminantAnalysis()
-lda.fit(x, y)
-ypredlda3 = lda.predict(x)
-#use confusion matrix function
-df_pred_mat_lda = confusion_matrix_model(lda,x,y)
-display("conf matrix of the lda model",df_pred_mat_lda)  
-print("accuracy score of the lda model:",accuracy_score(ypredlda3,y))  
-
-x,y = prepare_data(x_train,y_train,result3_std)
-print("accuracy score of the lda model Validation Set:",cross_val_score(lda,x,y,cv=10).mean())
-```
-
-
-
     'conf matrix of the lda model'
 
 
@@ -711,44 +624,12 @@ print("accuracy score of the lda model Validation Set:",cross_val_score(lda,x,y,
 ### World Cup 2018 - Knockout Games
 
 
-
-```
-x,y = prepare_data(x_test2,y_test2,result3_std)
-lda = LinearDiscriminantAnalysis()
-lda.fit(x, y)
-ypredlda3 = knockout_test(lda,x)
-#use confusion matrix function
-# df_pred_mat_lda = confusion_matrix_model_knockout(lda,x,y)
-# display("conf matrix of the lda model",df_pred_mat_lda)  
-print("accuracy score of lda on baseline model of the second test set:",accuracy_score(ypredlda3,y))  
-
-```
-
-
     accuracy score of lda on baseline model of the second test set: 0.0
 
 
 ## Quadratic Discriminant Analysis (QDA)
 
 ### Training Data Set
-
-
-
-```
-x,y = prepare_data(x_train,y_train,result3_std)
-qda = QuadraticDiscriminantAnalysis()
-qda.fit(x, y)
-ypredqda3 = qda.predict(x)
-#use confusion matrix function
-df_pred_mat_qda = confusion_matrix_model(qda,x,y)
-display("conf matrix of qda on baseline model train set",df_pred_mat_qda)  
-print("accuracy score of qda on baselin model train set:",accuracy_score(ypredqda3,y))  
-
-x,y = prepare_data(x_train,y_train,result3_std)
-print("accuracy score of qda on baseline model Validation Set:",cross_val_score(qda,x,y,cv=10).mean())
-```
-
-
 
     'conf matrix of qda on baseline model train set'
 
@@ -808,24 +689,7 @@ print("accuracy score of qda on baseline model Validation Set:",cross_val_score(
 ### World Cup 2018 - Group  Phase games
 
 
-
-```
-x,y = prepare_data(x_test1,y_test1,result3_std)
-ypredqda3_test1 = qda.predict(x)
-#use confusion matrix function
-df_pred_mat_qda = confusion_matrix_model(qda,x,y)
-display("conf matrix of the qda model",df_pred_mat_qda)  
-print("accuracy score of the qda model:",accuracy_score(ypredqda3_test1,y))  
-
-x,y = prepare_data(x_train,y_train,result3_std)
-print("accuracy score of the qda model Validation Set:",cross_val_score(qda,x,y,cv=10).mean())
-```
-
-
-
     'conf matrix of the qda model'
-
-
 
 <div>
 <style scoped>
@@ -881,20 +745,6 @@ print("accuracy score of the qda model Validation Set:",cross_val_score(qda,x,y,
 ### World Cup 2018 - Knockout Games
 
 
-
-```
-x,y = prepare_data(x_test2,y_test2,result3_std)
-ypredqda3_test2 = qda.predict(x)
-#use confusion matrix function
-# df_pred_mat_qda = confusion_matrix_model(qda,x,y)
-# display("conf matrix of the qda model",df_pred_mat_qda)  
-print("accuracy score of qda on baseline model second test:",accuracy_score(ypredqda3_test2,y))  
-
-x,y = prepare_data(x_train,y_train,result3_std)
-print("accuracy score of qda baseline model on Validation Set:",cross_val_score(qda,x,y,cv=10).mean())
-```
-
-
     accuracy score of qda on baseline model second test: 0.5625
     accuracy score of qda baseline model on Validation Set: 0.5103846653394701
 
@@ -910,37 +760,10 @@ In this section we try different types of Ensembles methods:
 
 ### train set
 
-
-
-```
-# fit the random forest model and get its accuracy score
-x,y = prepare_data(x_train,y_train,result3_std)
-rfml = RandomForestClassifier(n_estimators=50, oob_score=True, max_depth=10,random_state=1234)
-rfml.fit(x, y)
-ypredml2=rfml.predict(x)
-
-print("accuracy score for the random forest model:",accuracy_score(ypredml2,y))
-
-```
-
-
     accuracy score for the random forest model: 0.6728395061728395
 
 
 ### test set 1
-
-
-
-```
-# fit the random forest model and get its accuracy score
-x,y = prepare_data(x_test1,y_test1,result3_std)
-# rfml = RandomForestClassifier(n_estimators=50, oob_score=True, max_depth=10,random_state=1234)
-# rfml.fit(x, y)
-ypredml2=rfml.predict(x)
-
-print("accuracy score for the random forest test1 on baseline model:",accuracy_score(ypredml2,y))
-
-```
 
 
     accuracy score for the random forest test1 on baseline model: 0.6666666666666666
@@ -949,78 +772,13 @@ print("accuracy score for the random forest test1 on baseline model:",accuracy_s
 ### test set 2
 
 
-
-```
-# fit the random forest model and get its accuracy score
-x,y = prepare_data(x_test2,y_test2,result3_std)
-# rfml = RandomForestClassifier(n_estimators=50, oob_score=True, max_depth=10,random_state=1234)
-# rfml.fit(x, y)
-ypredml2=knockout_test(rfml,x)
-
-print("accuracy score for the random forest test2 on baseline model:",accuracy_score(ypredml2,y))
-
-```
-
-
     accuracy score for the random forest test2 on baseline model: 0.1875
 
 
 ##Bagging
 
 
-
-```
-from sklearn.utils import resample
-
-
-x,y = prepare_data(x_train,y_train,result3_std)
-xt1,yt1 = prepare_data(x_test1,y_test1,result3_std)
-xt2,yt2 = prepare_data(x_test2,y_test2,result3_std)
-
-np.random.seed(0)
-
-N_bootstraps = 45
-bagging_train = np.zeros((x.shape[0], N_bootstraps),dtype=int)
-bagging_test1 = np.zeros((xt1.shape[0], N_bootstraps),dtype=int)
-bagging_test2 = np.zeros((xt2.shape[0], N_bootstraps),dtype=int)
-bagging_trees = []
-
-simpletree = DecisionTreeClassifier(max_depth=16)
-
-# bootstrapping, saving results each time
-for i in range(N_bootstraps):
-  boot_xx, boot_y = resample(x, y)
-  bagging_trees.append(simpletree.fit(boot_xx, boot_y))
-  bagging_train[:, i] = simpletree.predict(x)
-  bagging_test1[:, i] = simpletree.predict(xt1)
-  bagging_test2[:, i] = simpletree.predict(xt2)
-
-
-# format table
-columns = ["Bootstrap-Model_"+str(i+1) for i in range(N_bootstraps)]
-rows_train = ["Training-Row_" + str(i+1) for i in range(len(x))]
-rows_test1 = ["Test-Row_" + str(i+1) for i in range(len(xt1))]
-rows_test2 = ["Test-Row_" + str(i+1) for i in range(len(xt2))]
-
-
-bagging_train = pd.DataFrame(bagging_train, columns=columns, index=rows_train)
-bagging_test1 = pd.DataFrame(bagging_test1, columns=columns, index=rows_test1)
-bagging_test2 = pd.DataFrame(bagging_test2, columns=columns, index=rows_test2)
-
-
-print("train bootstrapped table:")
-display(bagging_train.head())
-print("\ntest1 bootstrapped table:")
-display(bagging_test1.head())
-print("\ntest2 bootstrapped table:")
-display(bagging_test2.head())
-
-```
-
-
     train bootstrapped table:
-
-
 
 <div>
 <style scoped>
@@ -1192,7 +950,6 @@ display(bagging_test2.head())
 
 
     test1 bootstrapped table:
-
 
 
 <div>
@@ -1537,81 +1294,9 @@ display(bagging_test2.head())
 
 
 
-
-```
-# get majority to generate combined predictions
-y_hat_train_maj = (np.mean(bagging_train,axis=1)>.5).astype(int)
-y_hat_test_maj1 = (np.mean(bagging_test1,axis=1)>.5).astype(int)
-y_hat_test_maj2 = (np.mean(bagging_test2,axis=1)>.5).astype(int)
-
-
-bagged_accuracy_train = accuracy_score(y, y_hat_train_maj)
-bagged_accuracy_test1 = accuracy_score(yt1, y_hat_test_maj1)
-bagged_accuracy_test2 = accuracy_score(yt2, y_hat_test_maj2)
-
-
-print("bagging model, training set accuracy:", bagged_accuracy_train)
-print("bagging model, test-1 set accuracy:", bagged_accuracy_test1)
-print("bagging model, test-2 set accuracy:", bagged_accuracy_test2)
-
-```
-
-
     bagging model, training set accuracy: 0.5359147025813692
     bagging model, test-1 set accuracy: 0.4166666666666667
     bagging model, test-2 set accuracy: 0.4375
-
-
-
-
-```
-def running_predictions(prediction_dataset, targets):
-    """A function to predict examples' class via the majority among trees (ties are predicted as 0)
-
-    Inputs:
-      prediction_dataset - a (n_examples by n_sub_models) dataset, where each entry [i,j] is sub-model j's prediction
-          for example i
-      targets - the true class labels
-
-    Returns:
-      a vector where vec[i] is the model's accuracy when using just the first i+1 sub-models
-    """
-
-    n_trees = prediction_dataset.shape[1]
-
-    # find the running percentage of models voting 1 as more models are considered
-    running_percent_1s = np.cumsum(prediction_dataset, axis=1)/np.arange(1,n_trees+1)
-
-    # predict 1 when the running average is above 0.5
-    running_conclusions = running_percent_1s > 0.5
-
-    # check whether the running predictions match the targets
-    running_correctnesss = running_conclusions == targets.reshape(-1,1)
-
-    return np.mean(running_correctnesss, axis=0)
-    # returns a 1-d series of the accuracy of using the first n trees to predict the targets
-```
-
-
-
-
-```
-running_pred_train = running_predictions(bagging_train.values, y)
-running_pred_test1 = running_predictions(bagging_test1.values, yt1)
-running_pred_test2 = running_predictions(bagging_test2.values, yt2)
-
-overfit_model = DecisionTreeClassifier(max_depth=16).fit(x, y)
-ypred_overfit = overfit_model.predict(xt1)
-
-plt.figure(figsize=(10,8))
-plt.plot(range(1,46), running_pred_train, 'o-', label='Training set, Bootstrapped Models')
-plt.plot(range(1,46), running_pred_test1, 'o-', label='Test set1, Bootstrapped Models')
-plt.plot(range(1,46), running_pred_test2, 'o-', label='Test set2, Bootstrapped Models')
-plt.title('Training and Test Set Accuracy Scores by Number of Bootstraps')
-plt.xlabel('Number of Bootstraps')
-plt.ylabel('Accuracy Score')
-plt.legend();
-```
 
 
 
@@ -1621,105 +1306,13 @@ plt.legend();
 ## Boosting
 
 
-
-```
-n_estimators = 800
-learning_rate = 0.05
-
-x,y = prepare_data(x_train,y_train,result3_std)
-ab = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=3),
-                            n_estimators=n_estimators, learning_rate=learning_rate)
-ab.fit(x, y)
-xt1,yt1 = prepare_data(x_test1,y_test1,result3_std)
-xt2,yt2 = prepare_data(x_test2,y_test2,result3_std)
-ab_scores_train = list(ab.staged_score(x, y))
-ab_scores_test1 = list(ab.staged_score(xt1, yt1))
-ab_scores_test2 = list(ab.staged_score(xt2, yt2))
-
-x_plot = range(1, n_estimators+1) # just so we plot x-values of 1-800 instead of 0-799
-
-plt.plot(x_plot, ab_scores_train, label='Training Set')
-plt.plot(x_plot, ab_scores_test1, label='Test Set-1')
-plt.plot(x_plot, ab_scores_test2, label='Test Set-2')
-plt.title('Adaboost Model: Accuracy Score by Number of Estimators/Iterations')
-plt.xlabel('Number of Estimators/Iterations')
-plt.ylabel('Accuracy')
-plt.legend();
-```
-
-
-
 ![png](milst4_files/milst4_99_0.png)
-
-
-
-
-```
-# List of lists of the staged predictions
-staged_scores_train = []
-staged_scores_test1 = []
-staged_scores_test2 = []
-
-for depth in range(1,5):
-  ab = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=depth),
-                            n_estimators=n_estimators, learning_rate=learning_rate)
-  ab.fit(x, y)
-
-  ab_scores_train = list(ab.staged_score(x, y))
-  ab_scores_test1 = list(ab.staged_score(xt1, yt1))
-  ab_scores_test2 = list(ab.staged_score(xt2, yt2))
-
-  staged_scores_train.append(ab_scores_train)
-  staged_scores_test1.append(ab_scores_test1)
-  staged_scores_test2.append(ab_scores_test2)
-
-```
-
-
-
-
-```
-fig, axs = plt.subplots(2,2,figsize=(10,8), sharey=True)
-
-for i, ax in enumerate(axs.ravel()):
-  ax.plot(x_plot, staged_scores_train[i], label='Training Set')
-  ax.plot(x_plot, staged_scores_test1[i], label='Test Set-1')
-  ax.plot(x_plot, staged_scores_test2[i], label='Test Set-2')
-  ax.set_title('Depth = {}'.format(i+1))
-  ax.set_xlabel('N_estimators')
-  ax.set_ylabel('Accuracy Score')
-  ax.legend();
-
-plt.tight_layout()
-plt.suptitle('Adaboost Models: Accuracy Score for Models with Different Base Tree Depths, \
-by Number of Estimators/Iterations', x=.5, y=1.02);
-```
 
 
 
 ![png](milst4_files/milst4_101_0.png)
 
 
-
-
-```
-staged_scores_test_array1 = np.array(staged_scores_test1)
-staged_scores_test_array2 = np.array(staged_scores_test2)
-
-
-for i, depth_scores in enumerate(staged_scores_test_array1):
-  depth = i+1
-  idx = (np.argmax(depth_scores))
-  print("Depth = {}: best test set 1 accuracy at {} estimators.".format(depth, idx+1))
-  print("train set accuracy score: {}\n".format(depth_scores[idx]))
-
-
-for i, depth_scores in enumerate(staged_scores_test_array2):
-  depth = i+1
-  idx = (np.argmax(depth_scores))
-  print("Depth = {}: best test set 2 accuracy at {} estimators.".format(depth, idx+1))
-  print("train set accuracy score: {}\n".format(depth_scores[idx]))
-```
 
 
     Depth = 1: best test set 1 accuracy at 1 estimators.
@@ -1748,45 +1341,13 @@ for i, depth_scores in enumerate(staged_scores_test_array2):
 
 
 
-##Neural Network
+## Neural Network
 
 
 ### Training Data Set
 
 
 
-```
-x,y = prepare_data(x_train,y_train,result3_std)
-y_nn = []
-for value in y:
-  if value == 0:
-    y_nn.append([1,0,0])
-  elif value == 1:
-    y_nn.append([0,1,0])
-  else:
-    y_nn.append([0,0,1])
-
-y_nn = np.array(y_nn)
-
-model_nn = Sequential([
-    Dense(200, input_shape=(x.shape[1],), activation='relu'),
-    # Dense(100, activation='relu'),
-    # Dense(50, activation='relu'),
-    Dense(3, activation='linear')
-])
-
-
-model_nn.compile(loss='mean_absolute_error',
-              optimizer='adam',metrics=['acc'])
-model_nn.summary()
-
-model_nn.fit(x, y_nn,
-          epochs=10*32,
-          batch_size=32,
-          validation_split=.2,
-          verbose=False)
-
-```
 
 
     _________________________________________________________________
@@ -1805,53 +1366,12 @@ model_nn.fit(x, y_nn,
 
 
 
-    <keras.callbacks.History at 0x7f271ef6fd68>
-
-
-
-
-
-```
-res=model_nn.evaluate(x, y_nn, verbose=False)
-
-print("the loss of this model is:",res[0])
-print("the accuracy of this model is:",res[1])
-```
-
-
     the loss of this model is: 0.2612320419012095
     the accuracy of this model is: 0.6470258137593767
 
 
 ### regularized neural network train set
 
-
-
-```
-from keras.constraints import maxnorm
-
-model2 = Sequential()
-model2.add(Dense(60, input_shape=(x.shape[1],), kernel_initializer='normal', activation='relu', kernel_constraint=maxnorm(3)))
-model2.add(Dropout(0.2))
-model2.add(Dense(30, kernel_initializer='normal', activation='relu', kernel_constraint=maxnorm(3)))
-model2.add(Dropout(0.2))
-model2.add(Dense(3, kernel_initializer='normal', activation='linear'))
-# Compile model
-
-model2.compile(loss='mean_absolute_error',
-              optimizer='adam',metrics=['acc'])
-
-model2.fit(x, y_nn,
-          epochs=10*32,
-          batch_size=32,
-          validation_split=.2,
-          verbose=False)
-
-print('Model 2')
-res1=model2.evaluate(x, y_nn, verbose=False)
-print("the loss of this model is:",res[0])
-print("the accuracy of this model is:",res[1])
-```
 
 
     Model 2
@@ -1863,38 +1383,6 @@ print("the accuracy of this model is:",res[1])
 
 
 
-```
-x,y = prepare_data(x_test1,y_test1,result3_std)
-y_nn = []
-for value in y:
-  if value == 0:
-    y_nn.append([1,0,0])
-  elif value == 1:
-    y_nn.append([0,1,0])
-  else:
-    y_nn.append([0,0,1])
-
-y_nn = np.array(y_nn)
-
-ypred_proba_nn = model2.predict(x)
-
-ypred_nn = []
-for value in ypred_proba_nn:
-  if value[0] == 1:
-    ypred_nn.append(0)
-  elif value[1] == 1:
-    ypred_nn.append(1)
-  else:
-    ypred_nn.append(2)
-
-ypred_nn_test1 = np.array(ypred_nn)
-
-print("The accuracy score of test set 1 of this neural net is:",accuracy_score(ypred_nn_test1,y))
-
-
-```
-
-
     The accuracy score of test set 1 of this neural net is: 0.4583333333333333
 
 
@@ -1902,45 +1390,12 @@ print("The accuracy score of test set 1 of this neural net is:",accuracy_score(y
 
 
 
-```
-
-x,y = prepare_data(x_test2,y_test2,result3_std)
-
-ypred_nn_test2 = knockout_test(model2,x)
-
-print("The accuracy score of test set 2 of this neural net is:",accuracy_score(ypred_nn_test2,y))
-
-```
-
-
     The accuracy score of test set 2 of this neural net is: 0.625
 
 
 # Model comparison
 
-In this Section we apply 7-fold Cross Validation to all the models designed above in order to fund which ones has the best Training and Validation Accuracy
-
-
-
-```
-models = [reg3, tree_clf, lda, qda, KNN3,rfml,model2]
-labels = ['Logistic Regression' ,'Decision Tree','LDA','QDA','KNN','Random Forest']
-x,y = prepare_data(x_train,y_train,result3)
-cv_scores = []
-for model, label in zip(models, labels):
-  cv_score = cross_val_score(model, x, y, scoring='accuracy', cv=7).mean()
-  cv_scores.append({'Model': label,
-                        'CV_Accuracy': cv_score})
-
-scores_df = pd.DataFrame(cv_scores, columns=['Model', 'CV_Accuracy'])
-scores_df.sort_values(by='CV_Accuracy', ascending=False, inplace=True)
-scores_df.reset_index(drop=True, inplace=True)
-scores_df.index +=1 # So the indices will be model rankings by score
-
-
-print("Mean CV Accuracy Score by Model:")
-display(scores_df.round(4))
-```
+In this Section we apply 5-fold Cross Validation to all the models designed above in order to fund which ones has the best Training and Validation Accuracy
 
 
     Mean CV Accuracy Score by Model:
@@ -2009,54 +1464,7 @@ display(scores_df.round(4))
 
 
 
-```
-plt.figure(figsize = [21,8])
-plt.subplot(1,3,1)
-plt.title('Logisitic reg. Feature Importance for Draw')
-plt.barh(result3.columns,reg3.coef_[0,:6],color='r')
-plt.barh(result3.columns,reg3.coef_[0,6:],color='b')
-plt.legend(['Home Team','Away Team'])
-plt.subplot(1,3,2)
-plt.title('Logisitic reg. Feature Importance for Home Team Win')
-plt.barh(result3.columns,reg3.coef_[1,:6],color='r')
-plt.barh(result3.columns,reg3.coef_[1,6:],color='b')
-plt.legend(['Home Team','Away Team'])
-plt.subplot(1,3,3)
-plt.title('Logisitic reg. Feature Importance for Away Team Win')
-plt.barh(result3.columns,reg3.coef_[2,:6],color='r')
-plt.barh(result3.columns,reg3.coef_[2,6:],color='b')
-plt.legend(['Home Team','Away Team'])
-
-```
-
-
-
-
-
-    <matplotlib.legend.Legend at 0x7f271e76d780>
-
-
-
-
 ![png](milst4_files/milst4_116_1.png)
-
-
-
-
-```
-# result3 coefficients
-
-plt.figure(figsize = [9,9])
-plt.title('Logisitic Feature Comparison (Age)')
-plt.barh(result3.columns[1]+' Draw',reg3.coef_[0,1],color='c',edgecolor='k')
-plt.barh(result3.columns[1]+' Draw',reg3.coef_[0,6],color='c')
-plt.barh(result3.columns[1]+' Home win',reg3.coef_[1,1],color='m',edgecolor='k')
-plt.barh(result3.columns[1]+' Home win',reg3.coef_[1,6],color='m')
-plt.barh(result3.columns[1]+' Away win',reg3.coef_[2,1],color='y',edgecolor='k')
-plt.barh(result3.columns[1]+' Away win',reg3.coef_[2,6],color='y')
-
-```
-
 
 
 
@@ -2069,23 +1477,10 @@ plt.barh(result3.columns[1]+' Away win',reg3.coef_[2,6],color='y')
 ![png](milst4_files/milst4_117_1.png)
 
 
-#Second Model built with non FIFA - Ranking Features
+
+# Second Model built with non FIFA - Ranking Features
 
 In this section we web-scrap data in order to find new feature apart from FIFA Ranking  feature with the goal of building a better model
-
-
-
-
-```
-# sofifa complete dataset
-response = requests.get('https://drive.google.com/uc?export=download&id=12Km8bbBwLulQi2uFymPSCkXBTB5Ws-qj')
-#have to decode the bytes before it can be read by pandas into df
-df1 = pd.read_csv(BytesIO(response.content),index_col=0)
-df1.head()
-```
-
-
-
 
 
 <div>
@@ -2254,16 +1649,6 @@ df1.head()
 </table>
 <p>5 rows × 74 columns</p>
 </div>
-
-
-
-
-
-```
-# rank players according to their overall score
-df1.nlargest(100, columns='Overall').head()
-```
-
 
 
 
