@@ -32,3 +32,28 @@ dataset contains all the various attributes about each player (Name, Age, Nation
 Potential, Acceleration, Agility and Balance). We grouped this dataset by the nationality of the
 players and averaged them for every existing column. This dataset will be used later on to create
 our own feature/predictors to predict the outcome of games without relying on the FIFA ranking.
+
+## Data Exploration
+
+Methods used to explore the data are as follow:
+
+- Check the types of data and verify the shape (number of rows and columns).
+- To handle missing values, we imputed the mean of the column in them.
+- Correct mismatch of two team names taken from different sources so that they can both used
+as index and be referred to on a dataframe merge.
+- Added a “winner” column for the international games dataframe to create the y_train
+categorical variable.
+- Dropped unnecessary columns of the data frames such as “Photo&quot; of players,&quot;Flag&quot;,&quot;Club”
+Logo since these are not significant for the prediction of outcome.
+- Different types of plots to explore the different predictors (detailed it in the EDA section).
+
+## Data cleaning
+
+- The players’ data frame contained wage and value columns of the players. These were a
+string with currency type and millions or thousands sign. We removed the currency symbols
+and transformed it to an integer.
+- FIFA World Cup started in the year 1930, so the International Results dataset dates to 1930.
+However for our analysis, the data is retained to 1990.
+- Numerical variables are of different scales; so in order to compare them they were
+standardized.
+- To handle missing data we imputed the mean of the columns where they were missing.
