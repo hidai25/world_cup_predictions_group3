@@ -27,7 +27,6 @@ at world cup.
 the World Cup is available at the time of this project).
 
 
-
 <h2>Challenges and Limitations</h2>
 This problem statement contains factors that the machine-learning model cannot account for. The
 model built will be just as good as the data used to build it, since the data will not represent these
