@@ -40,7 +40,7 @@
                     {% if page.url == node.url %}
                       &nbsp;|&nbsp;<a class="active" href="{{node.url | prepend: site.baseurl}}" class="active" style="color:#0e035f">{{node.title}}</a>
                     {% else %}
-                      &nbsp;|&nbsp;<a href="{{node.url | prepend: site.baseurl}}">{{node.title}}</a>
+                      &nbsp;|&nbsp;<a href="{{node.url | prepend: site.baseurl}}"></a>
                     {% endif %}
                 {% endif %}
         {% endfor %}
