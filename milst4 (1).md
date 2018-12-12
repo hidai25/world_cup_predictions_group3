@@ -3,7 +3,7 @@ title: Results
 nav_include: 6
 ---
 
-# Results of our baseline model
+# Baseline Model
 
 In this section, we display the results of our baseline model and we look for the best Hyper parameters for each model tried. The model to be tried include:
 
