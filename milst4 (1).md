@@ -1875,8 +1875,6 @@ Mean 5-Fold CV Accuracy Score by Model:
 </div>
 
 
-
-
 ## all the results for the Knockout phase
 
 
@@ -2043,32 +2041,7 @@ Mean 5-Fold CV Accuracy Score by Model:
 ## Our model
 
 
-
-```
-# # # fit the logistic regression model
-reg2 = LogisticRegression(penalty='l2',multi_class='multinomial', solver='lbfgs', random_state=123456)
-x,y = prepare_data(x_train,y_train,result2_std)
-reg2.fit(x,y)
-
-# # test set code
-x,y = prepare_data(x_test1,y_test1,result2_std)
-ypredmf1_test_om = reg2.predict(x)
-df_predmf1_test_om = encoder(ypredmf1_test_om,y_test1,x_test1)
-
-x,y = prepare_data(x_test1,y_test1,result2_std)
-ypredmf1_test = reg2.predict(x)
-df_predmf1_test = encoder(ypredmf1_test,y_test1,x_test1)
-```
-
-
-
-
-```
-# dataframe for all the results for the group phase
-final_test1_om = pd.merge(x_test1, df_predml1_test,left_index=True, right_index=True)
-display(final_test1_om)
-```
-
+## All the results for the group phase
 
 
 <div>
@@ -2437,26 +2410,7 @@ display(final_test1_om)
 </div>
 
 
-
-
-```
-# test 2 code
-x,y = prepare_data(x_test2,y_test2,result2_std)
-ypredml2_test = knockout_test(reg2,x)
-df_predml2_test = encoder(ypredml2_test,y_test2,x_test2)
-```
-
-
-
-
-```
-# dataframe for all the results for the Knockout phase
-x_test2_reset=x_test2.reset_index()
-final_test2_om=pd.merge(x_test2_reset,df_predml2_test,left_index=True, right_index=True)
-display(final_test2_om)
-```
-
-
+## All the results for the Knockout phase
 
 <div>
 <style scoped>
