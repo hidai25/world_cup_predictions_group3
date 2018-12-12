@@ -193,7 +193,7 @@ The accuracy score of the KNN model on Cross Validation on the baseline model: 5
 </div>
 
 ```
-Confusion matrix of KNN of the baseline model on the Group Phase games'
+Confusion matrix of KNN of the baseline model on the Group Phase games:
 ```
 
 <div>
@@ -217,13 +217,13 @@ Confusion matrix of KNN of the baseline model on the Group Phase games'
 </div>
 
 ```
-The accuracy score of the baseline model with KNN on the Group Phase is: 50%$
+The accuracy score of the baseline model with KNN on the Group Phase is: 50%
 ```
 
 #### World Cup 2018 - Knockout Games
 
 ```
-The Confusion matrix of KNN of the baseline model on the second test set'
+The Confusion matrix of KNN of the baseline model on the second test set:
 ```
 
 <div>
@@ -263,7 +263,7 @@ Best depth is 16
 ####      Training Data Set
 
 ```
-The Confusion matrix of lda on the baseline model
+The Confusion matrix of the train set of LDA on the baseline model
 ```
 
 <div>
@@ -294,7 +294,7 @@ The accuracy score of LDA on baseline model Cross Validation: 52.47%
 ####      World Cup 2018 - Group Phase games
 
 ```
-The confusion matrix of the lda model
+The confusion matrix of the LDA model of the test set 1 on the baseline model
 ```
 
 <div>
@@ -324,7 +324,7 @@ The accuracy score of the LDA model: 50%
 ####      World Cup 2018 - Knockout Games
 
 ```
-The accuracy score of lda on baseline model of the second test set 1: 68.75%
+The accuracy score of LDA on baseline model of the second test set 1: 68.75%
 
 ```
 
@@ -333,7 +333,7 @@ The accuracy score of lda on baseline model of the second test set 1: 68.75%
 ####      Training Data Set
 
 ```
-Confusion matrix of qda on baseline model train set
+Confusion matrix of QDA on baseline model train set
 ```
 
 <div>
@@ -357,14 +357,14 @@ Confusion matrix of qda on baseline model train set
 </div>
 
 ```
-The accuracy score of qda on baselin model train set: 52.97%
-The accuracy score of qda on baseline model cross validation: 51.08%
+The accuracy score of QDA on baseline model train set: 52.97%
+The accuracy score of QDA on baseline model cross validation: 51.08%
 ```
 
 ####      World Cup 2018 - Group Phase games
 
 ```
-The Confusion matrix of the qda model
+The Confusion matrix of the QDA model
 ```
 
 <div>
@@ -388,13 +388,13 @@ The Confusion matrix of the qda model
 </div>
 
 ```
-The accuracy score of the qda model: 43.75%
+The accuracy score of the QDA model: 43.75%
 ```
 
 ####      World Cup 2018 - Knockout Games
 
 ```
-The accuracy score of qda on baseline model second test: 45.833%
+The accuracy score of QDA on baseline model second test: 45.833%
 ```
 
 ### 6) Ensemble methods
@@ -410,19 +410,19 @@ In this section we try different types of Ensembles methods:
 ##### train set
 
 ```
-The accuracy score for the random forest model: 67.28%
+The accuracy score for the Random Forest model: 67.28%
 ```
 
 #####      World Cup 2018 - Group Phase games
 
 ```
-The accuracy score for the random forest test1 on baseline model: 66.67%
+The accuracy score for the Random Forest test1 on baseline model: 66.67%
 ```
 
 #####      World Cup 2018 - Knockout Games
 
 ```
-The accuracy score for the random forest test2 on baseline model: 18.75%
+The accuracy score for the Random Forest test2 on baseline model: 18.75%
 ```
 
 #### Bagging
@@ -486,8 +486,6 @@ Non-trainable params: 0
 _________________________________________________________________
 
 
-the loss of this model is: 0.2612320419012095
-the accuracy of this model is: 0.6470258137593767
 ```
 
 ##### regularized neural network train set
