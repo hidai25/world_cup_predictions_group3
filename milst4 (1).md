@@ -1277,35 +1277,10 @@ Mean 5-Fold CV Accuracy Score by Model:
 </table>
 </div>
 
-# Results and comparison between baseline model and Second Model
 
-Our analysis of the training set show that random forest is the best model to use for the test set for both the baseline model and the model we developed ourselves
-
-## Baseline Model Test Set Results
-
-```
-accuracy score for the random forest train set baseline model is: 0.6728395061728395
-accuracy score for the random forest train set baseline model is: 0.6666666666666666
-accuracy score for the random forest train set baseline model is: 0.1875
+## Overall Comparison between the Baseline Model and Our Model
 
 
-
-
-
-accuracy score for the random forest of our model on the train set : 0.6717171717171717
-accuracy score for the random forest of model test 1 is: 0.5625
-accuracy score for the random forest of our model test2 is model: 0.25
-```
-
-Overall Comparison of the Baseline Model and our Model
-
-
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-0lax{text-align:left;vertical-align:top}
-</style>
 <table class="tg">
   <tr>
     <th class="tg-0lax">Model</th>
