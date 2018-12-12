@@ -1,6 +1,6 @@
 
 
-<img src="images/fifagr.jpg"  />
+<img src="images/fifagr.jpg" width="980"  />
 <figcaption class="credit">
     <span>
         	        Image by Fifa.com
