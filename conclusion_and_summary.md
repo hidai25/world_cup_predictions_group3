@@ -18,3 +18,8 @@ As mentioned above, it would be worth looking into non-FIFA data sources to impr
 
 
 <img src="images/champions.jpg" width="980px"/>
+<figcaption class="credit">
+    <span>
+        	        Image by nytimes.com
+	            </span>
+  </figcaption>
