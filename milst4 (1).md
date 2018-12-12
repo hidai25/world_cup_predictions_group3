@@ -166,8 +166,8 @@ Confusion matrix of the KNN model of the train set on the baseline model'
 </div>
 
 ```
-The accuracy score of the knn model on the train set on the baseline model: 62.45%
-The accuracy score of the knn model Validation Set on the baseline model: 55.19%
+The accuracy score of the KNN model on the train set on the baseline model: 62.45%
+The accuracy score of the KNN model on Cross Validation on the baseline model: 55.19%
 ```
 
 #### World Cup 2018 - Group Phase games
@@ -287,8 +287,8 @@ The Confusion matrix of lda on the baseline model
 </div>
 
 ```
-The accuracy score of lda on baseline model: 52.52%
-The accuracy score of lda on baseline model Validation Set: 52.47%
+The accuracy score of LDA on baseline model: 52.52%
+The accuracy score of LDA on baseline model Cross Validation: 52.47%
 ```
 
 ####      World Cup 2018 - Group Phase games
@@ -318,14 +318,14 @@ The confusion matrix of the lda model
 </div>
 
 ```
-The accuracy score of the lda model: 79.17%
-The accuracy score of the lda model Validation Set: 52.47%
+The accuracy score of the LDA model: 50%
 ```
 
 ####      World Cup 2018 - Knockout Games
 
 ```
-The accuracy score of lda on baseline model of the second test set: 0%
+The accuracy score of lda on baseline model of the second test set 1: 68.75%
+
 ```
 
 ### 5) Quadratic Discriminant Analysis (QDA)
@@ -333,7 +333,7 @@ The accuracy score of lda on baseline model of the second test set: 0%
 ####      Training Data Set
 
 ```
-Confusion matrix of qda on baseline model train set'
+Confusion matrix of qda on baseline model train set
 ```
 
 <div>
@@ -358,7 +358,7 @@ Confusion matrix of qda on baseline model train set'
 
 ```
 The accuracy score of qda on baselin model train set: 52.97%
-The accuracy score of qda on baseline model Validation Set: 51.08%
+The accuracy score of qda on baseline model cross validation: 51.08%
 ```
 
 ####      World Cup 2018 - Group Phase games
@@ -389,14 +389,12 @@ The Confusion matrix of the qda model
 
 ```
 The accuracy score of the qda model: 43.75%
-The accuracy score of the qda model Validation Set: 51.08%
 ```
 
 ####      World Cup 2018 - Knockout Games
 
 ```
-The accuracy score of qda on baseline model second test: 56.25%
-The accuracy score of qda baseline model on Validation Set: 51.08%
+The accuracy score of qda on baseline model second test: 45.833%
 ```
 
 ### 6) Ensemble methods
