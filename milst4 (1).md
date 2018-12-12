@@ -1,4 +1,7 @@
-
+---
+title: Results
+nav_include: 6
+---
 
 # Results of our baseline model
 
@@ -18,7 +21,7 @@ As Stated in our project statement, we will first try to find the best model bas
 
 ## Model Selection
 
-### Logisitic regression - FIFA Ranking Based Model
+### 1) Logisitic regression - FIFA Ranking Based Model
 Our First model is built using multinomial Logistic Regression on the three classes in the y_train.
 We will use the training accuracy score of this model as our baseline for all the other models.
 
@@ -73,7 +76,7 @@ Accuracy score or the model logistic regression multinomial model is: 52.47%
 </div>
 
 ```
-'conf matrix of logisitic regression of the baseline model on the first test set'
+Confusion matrix of logisitic regression of the baseline model on the first test set'
 ```
 
 <div>
@@ -101,7 +104,7 @@ The accuracy score of the multinomial logistic regression model on the Group Pha
 
 
 
-'conf matrix of logistic regression of the baseline model of the second test set'
+Confusion matrix of logistic regression of the baseline model of the second test set'
 ```
 
 <div>
@@ -128,7 +131,7 @@ The accuracy score of the multinomial logistic regression model on the Group Pha
 The accuracy score of the multinomial logistic regression on Knockout games is: 62.5%
 ```
 
-### KNN - FIFA Ranking Based Model
+### 2) KNN - FIFA Ranking Based Model
 
 Our second model was built on the k-Nearest Neighbors algorithm. To determine the optimal k for the training set, we used cross_val_score to evaluate different values of k on repeated subsamples of our training set
 The Best K for this model was  5.
@@ -139,7 +142,7 @@ The Best K for this model was  5.
 Using the value k=5 we are now able to build the best kNN model
 
 ```
-'conf matrix of the KNN model of the train set on the baseline model'
+Confusion matrix of the KNN model of the train set on the baseline model'
 ```
 
 <div>
@@ -163,11 +166,11 @@ Using the value k=5 we are now able to build the best kNN model
 </div>
 
 ```
-accuracy score of the knn model of the train set on the baseline model: 0.6245791245791246
-accuracy score of the knn model Validation Set on the baseline model: 0.5518964059749552
+The accuracy score of the knn model on the train set on the baseline model: 62.45%
+The accuracy score of the knn model Validation Set on the baseline model: 55.19%
 ```
 
-## World Cup 2018 - Group Phase games
+#### World Cup 2018 - Group Phase games
 
 <div>
   <style scoped="">
@@ -190,7 +193,7 @@ accuracy score of the knn model Validation Set on the baseline model: 0.55189640
 </div>
 
 ```
-'conf matrix of KNN of the baseline model on the first test set'
+Confusion matrix of KNN of the baseline model on the Group Phase games'
 ```
 
 <div>
@@ -214,13 +217,13 @@ accuracy score of the knn model Validation Set on the baseline model: 0.55189640
 </div>
 
 ```
-accuracy score or the baseline model with KNN on the first test set is: 0.5
+The accuracy score of the baseline model with KNN on the Group Phase is: 50%$
 ```
 
-## World Cup 2018 - Knockout Games
+#### World Cup 2018 - Knockout Games
 
 ```
-'conf matrix of KNN of the baseline model on the second test set'
+The Confusion matrix of KNN of the baseline model on the second test set'
 ```
 
 <div>
@@ -244,21 +247,23 @@ accuracy score or the baseline model with KNN on the first test set is: 0.5
 </div>
 
 ```
-accuracy score or the baseline model with KNN on second  test set is: 0.4375
+The accuracy score of the baseline model with KNN on Knockout Games WC2018 is: 43.75%
 ```
 
-## Decision tree-Baseline Model
+### 3) Decision tree - FIFA Ranking Based Model
+
+Based on the plot below, we pick 16 as our maximum depth for both our decision Tree and Random Forest Models.
 
 ![png](milst4_files/milst4_69_0.png)
 
 Best depth is 16
 
-## Linear Discriminant Analysis (LDA)-Baseline model
+### 4) Linear Discriminant Analysis (LDA)- FIFA Ranking Based Model
 
-### Train Data Set
+####      Training Data Set
 
 ```
-'conf matrix of lda on the baseline model'
+The Confusion matrix of lda on the baseline model
 ```
 
 <div>
@@ -282,14 +287,14 @@ Best depth is 16
 </div>
 
 ```
-accuracy score of lda on baseline model: 0.5252525252525253
-accuracy score of lda on baseline model Validation Set: 0.5247027017801897
+The accuracy score of lda on baseline model: 52.52%
+The accuracy score of lda on baseline model Validation Set: 52.47%
 ```
 
-### World Cup 2018 - Group Phase games
+####      World Cup 2018 - Group Phase games
 
 ```
-'conf matrix of the lda model'
+The confusion matrix of the lda model
 ```
 
 <div>
@@ -313,22 +318,22 @@ accuracy score of lda on baseline model Validation Set: 0.5247027017801897
 </div>
 
 ```
-accuracy score of the lda model: 0.7916666666666666
-accuracy score of the lda model Validation Set: 0.5247027017801897
+The accuracy score of the lda model: 79.17%
+The accuracy score of the lda model Validation Set: 52.47%
 ```
 
-### World Cup 2018 - Knockout Games
+####      World Cup 2018 - Knockout Games
 
 ```
-accuracy score of lda on baseline model of the second test set: 0.0
+The accuracy score of lda on baseline model of the second test set: 0%
 ```
 
-## Quadratic Discriminant Analysis (QDA)
+### 5) Quadratic Discriminant Analysis (QDA)
 
-### Training Data Set
+####      Training Data Set
 
 ```
-'conf matrix of qda on baseline model train set'
+Confusion matrix of qda on baseline model train set'
 ```
 
 <div>
@@ -352,14 +357,14 @@ accuracy score of lda on baseline model of the second test set: 0.0
 </div>
 
 ```
-accuracy score of qda on baselin model train set: 0.5297418630751964
-accuracy score of qda on baseline model Validation Set: 0.5103846653394701
+The accuracy score of qda on baselin model train set: 52.97%
+The accuracy score of qda on baseline model Validation Set: 51.08%
 ```
 
-### World Cup 2018 - Group Phase games
+####      World Cup 2018 - Group Phase games
 
 ```
-'conf matrix of the qda model'
+The Confusion matrix of the qda model
 ```
 
 <div>
@@ -383,18 +388,18 @@ accuracy score of qda on baseline model Validation Set: 0.5103846653394701
 </div>
 
 ```
-accuracy score of the qda model: 0.4375
-accuracy score of the qda model Validation Set: 0.5103846653394701
+The accuracy score of the qda model: 43.75%
+The accuracy score of the qda model Validation Set: 51.08%
 ```
 
-### World Cup 2018 - Knockout Games
+####      World Cup 2018 - Knockout Games
 
 ```
-accuracy score of qda on baseline model second test: 0.5625
-accuracy score of qda baseline model on Validation Set: 0.5103846653394701
+The accuracy score of qda on baseline model second test: 56.25%
+The accuracy score of qda baseline model on Validation Set: 51.08%
 ```
 
-# Ensemble methods
+### 6) Ensemble methods
 
 In this section we try different types of Ensembles methods:
 
@@ -402,112 +407,38 @@ In this section we try different types of Ensembles methods:
 - Bagging
 - Boosting
 
-## Random Forest- baseline model
+#### Random Forest- baseline model
 
-### train set
-
-```
-accuracy score for the random forest model: 0.6728395061728395
-```
-
-### test set 1
+##### train set
 
 ```
-accuracy score for the random forest test1 on baseline model: 0.6666666666666666
+The accuracy score for the random forest model: 67.28%
 ```
 
-### test set 2
+#####      World Cup 2018 - Group Phase games
 
 ```
-accuracy score for the random forest test2 on baseline model: 0.1875
+The accuracy score for the random forest test1 on baseline model: 66.67%
 ```
 
-## Bagging
+#####      World Cup 2018 - Knockout Games
 
 ```
-train bootstrapped table:
+The accuracy score for the random forest test2 on baseline model: 18.75%
 ```
 
-<div>
-  <style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+#### Bagging
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-  <table border="1" class="dataframe">
-  <thead><tr style="text-align: right;"><th></th><th>Bootstrap-Model_1</th><th>Bootstrap-Model_2</th><th>Bootstrap-Model_3</th><th>Bootstrap-Model_4</th><th>Bootstrap-Model_5</th><th>Bootstrap-Model_6</th><th>Bootstrap-Model_7</th><th>Bootstrap-Model_8</th><th>Bootstrap-Model_9</th><th>Bootstrap-Model_10</th><th>...</th><th>Bootstrap-Model_36</th><th>Bootstrap-Model_37</th><th>Bootstrap-Model_38</th><th>Bootstrap-Model_39</th><th>Bootstrap-Model_40</th><th>Bootstrap-Model_41</th><th>Bootstrap-Model_42</th><th>Bootstrap-Model_43</th><th>Bootstrap-Model_44</th><th>Bootstrap-Model_45</th></tr></thead>
-  <tbody><tr><th>Training-Row_1</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Training-Row_2</th><td>0</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>...</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>Training-Row_3</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>...</td><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>1</td></tr><tr><th>Training-Row_4</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Training-Row_5</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr></tbody>
-</table>
-  <p>5 rows × 45 columns</p>
-</div>
 
 ```
-test1 bootstrapped table:
-```
-
-<div>
-  <style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-  <table border="1" class="dataframe">
-  <thead><tr style="text-align: right;"><th></th><th>Bootstrap-Model_1</th><th>Bootstrap-Model_2</th><th>Bootstrap-Model_3</th><th>Bootstrap-Model_4</th><th>Bootstrap-Model_5</th><th>Bootstrap-Model_6</th><th>Bootstrap-Model_7</th><th>Bootstrap-Model_8</th><th>Bootstrap-Model_9</th><th>Bootstrap-Model_10</th><th>...</th><th>Bootstrap-Model_36</th><th>Bootstrap-Model_37</th><th>Bootstrap-Model_38</th><th>Bootstrap-Model_39</th><th>Bootstrap-Model_40</th><th>Bootstrap-Model_41</th><th>Bootstrap-Model_42</th><th>Bootstrap-Model_43</th><th>Bootstrap-Model_44</th><th>Bootstrap-Model_45</th></tr></thead>
-  <tbody><tr><th>Test-Row_1</th><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr><tr><th>Test-Row_2</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Test-Row_3</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>1</td><td>1</td><td>2</td><td>0</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Test-Row_4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>...</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td></tr><tr><th>Test-Row_5</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody>
-</table>
-  <p>5 rows × 45 columns</p>
-</div>
-
-```
-test2 bootstrapped table:
-```
-
-<div>
-  <style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-  <table border="1" class="dataframe">
-  <thead><tr style="text-align: right;"><th></th><th>Bootstrap-Model_1</th><th>Bootstrap-Model_2</th><th>Bootstrap-Model_3</th><th>Bootstrap-Model_4</th><th>Bootstrap-Model_5</th><th>Bootstrap-Model_6</th><th>Bootstrap-Model_7</th><th>Bootstrap-Model_8</th><th>Bootstrap-Model_9</th><th>Bootstrap-Model_10</th><th>...</th><th>Bootstrap-Model_36</th><th>Bootstrap-Model_37</th><th>Bootstrap-Model_38</th><th>Bootstrap-Model_39</th><th>Bootstrap-Model_40</th><th>Bootstrap-Model_41</th><th>Bootstrap-Model_42</th><th>Bootstrap-Model_43</th><th>Bootstrap-Model_44</th><th>Bootstrap-Model_45</th></tr></thead>
-  <tbody><tr><th>Test-Row_1</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Test-Row_2</th><td>0</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>2</td><td>0</td><td>1</td><td>2</td><td>...</td><td>2</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>Test-Row_3</th><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>...</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><th>Test-Row_4</th><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><th>Test-Row_5</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody>
-</table>
-  <p>5 rows × 45 columns</p>
-</div>
-
-```
-bagging model, training set accuracy: 0.5359147025813692
-bagging model, test-1 set accuracy: 0.4166666666666667
-bagging model, test-2 set accuracy: 0.4375
+bagging model, training set accuracy: 53.6%
+bagging model, Group Phase games accuracy: 41.67%
+bagging model, Knockout Games  accuracy: 43.75%
 ```
 
 ![png](milst4_files/milst4_97_0.png)
 
-## Boosting
+#### Boosting
 
 ![png](milst4_files/milst4_99_0.png)
 
@@ -539,9 +470,9 @@ Depth = 4: best test set 2 accuracy at 51 estimators.
 train set accuracy score: 0.5625
 ```
 
-## Neural Network
+#### Neural Network
 
-### Training Data Set
+##### Training Data Set
 
 ```
 _________________________________________________________________
@@ -557,14 +488,11 @@ Non-trainable params: 0
 _________________________________________________________________
 
 
-
-
-
 the loss of this model is: 0.2612320419012095
 the accuracy of this model is: 0.6470258137593767
 ```
 
-### regularized neural network train set
+##### regularized neural network train set
 
 ```
 Model 2
@@ -572,19 +500,19 @@ the loss of this model is: 0.2612320419012095
 the accuracy of this model is: 0.6470258137593767
 ```
 
-### World Cup 2018 - Group Phase games
+##### World Cup 2018 - Group Phase games
 
 ```
-The accuracy score of test set 1 of this neural net is: 0.4583333333333333
+The accuracy score of Group games of this neural net is: 0.4583333333333333
 ```
 
-### World Cup 2018 - Knockout Games
+##### World Cup 2018 - Knockout Games
 
 ```
-The accuracy score of test set 2 of this neural net is: 0.625
+The accuracy score of Knockout of this neural net is: 0.625
 ```
 
-# Model comparison
+## Model comparison
 
 In this Section we apply 5-fold Cross Validation to all the models designed above in order to fund which ones has the best Training and Validation Accuracy
 
@@ -614,14 +542,14 @@ Mean CV Accuracy Score by Model:
 
 # Second Model built with non FIFA - Ranking Features
 
-# Results
+##  Model Selection
 
-## Logistic regression- Second model
+### 1) Logistic regression- Second model
 
-### Training Data Set
+#### Training Data Set
 
 ```
-'conf matrix of logisitic regression of our model'
+Confusion matrix of logisitic regression of our model'
 ```
 
 <div>
@@ -645,10 +573,10 @@ Mean CV Accuracy Score by Model:
 </div>
 
 ```
-accuracy score or the model logistic regression multinomial model is: 0.5549943883277216
+The accuracy score or the model logistic regression multinomial model is: 55.94%
 ```
 
-### World Cup 2018 - Group Phase games
+#### World Cup 2018 - Group Phase games
 
 <div>
   <style scoped="">
@@ -671,7 +599,7 @@ accuracy score or the model logistic regression multinomial model is: 0.55499438
 </div>
 
 ```
-'conf matrix of logisitic regression of our model'
+The Confusion matrix of logisitic regression of our model'
 ```
 
 <div>
@@ -695,23 +623,15 @@ accuracy score or the model logistic regression multinomial model is: 0.55499438
 </div>
 
 ```
-accuracy score of the model logistic regression multinomial model on test set of our model is: 0.5416666666666666
+The accuracy score of the model logistic regression multinomial model on test set of our model is: 54.17%
 ```
 
-finding top 2 components
+### 2) KNN model- Second model
+
+####      Training Data Set
 
 ```
-number of components that explain at least 90% of the variance= 10
-```
-
-![png](milst4_files/milst4_137_1.png)
-
-## KNN model- Second model
-
-### Training Data Set
-
-```
-'conf matrix of the KNN model of our model'
+Confusion matrix of the KNN model of our model'
 ```
 
 <div>
@@ -735,10 +655,10 @@ number of components that explain at least 90% of the variance= 10
 </div>
 
 ```
-accuracy score of the knn model training set: 0.6156004489337823
+The accuracy score of the knn model training set: 61.56%
 ```
 
-### World Cup 2018 - Group Phase games
+####      World Cup 2018 - Group Phase games
 
 <div>
   <style scoped="">
@@ -761,7 +681,7 @@ accuracy score of the knn model training set: 0.6156004489337823
 </div>
 
 ```
-'conf matrix of KNN of our model'
+Confusion matrix of KNN of our model'
 ```
 
 <div>
@@ -785,10 +705,10 @@ accuracy score of the knn model training set: 0.6156004489337823
 </div>
 
 ```
-accuracy score or the model KNN model on test set is: 0.5208333333333334
+The accuracy score or the model KNN model on test set is: 52.08%
 ```
 
-### World Cup 2018 - Knockout Phase games
+####      World Cup 2018 - Knockout Phase games
 
 <div>
   <style scoped="">
@@ -811,7 +731,7 @@ accuracy score or the model KNN model on test set is: 0.5208333333333334
 </div>
 
 ```
-'conf matrix of KNN of our model'
+The Confusion matrix of KNN of our model'
 ```
 
 <div>
@@ -835,18 +755,18 @@ accuracy score or the model KNN model on test set is: 0.5208333333333334
 </div>
 
 ```
-accuracy score or the model KNN model on test set is: 0.25
+The accuracy score or the model KNN model on test set is: 0.25
 ```
 
-## **_DECISION TREE FOR OUR MODEL_**
+### 3) Decision Tree - Second Model
 
-### **_Data Training Set_**
+#### Data Training Set
 
 ![png](milst4_files/milst4_148_0.png)
 
 Best depth: 18
 
-### **_World Cup 2018 - Group Phase games_**
+#### World Cup 2018 - Group Phase games
 
 <div>
   <style scoped="">
@@ -869,7 +789,7 @@ Best depth: 18
 </div>
 
 ```
-'conf matrix of Tree of our own model'
+The Confusion matrix of Tree of our own model'
 ```
 
 <div>
@@ -893,10 +813,10 @@ Best depth: 18
 </div>
 
 ```
-accuracy score for our own model with Decision Tree on test set is: 0.6041666666666666
+The accuracy score for our own model with Decision Tree on test set is: 60.4%
 ```
 
-### World Cup 2018 - Group Phase games
+#### World Cup 2018 - Group Phase games
 
 <div>
   <style scoped="">
@@ -919,7 +839,7 @@ accuracy score for our own model with Decision Tree on test set is: 0.6041666666
 </div>
 
 ```
-'conf matrix of Tree of our own model'
+Confusion matrix of Tree of our own model'
 ```
 
 <div>
@@ -943,12 +863,12 @@ accuracy score for our own model with Decision Tree on test set is: 0.6041666666
 </div>
 
 ```
-Accuracy score for our own model with Decision Tree on test set is: 0.25
+The Accuracy score for our own model with Decision Tree on test set is: 25%
 ```
 
-## LDA-Our model
+### 4) LDA-Our model
 
-### **_Training Data Set_**
+#### Training Data Set
 
 <div>
   <style scoped="">
@@ -971,7 +891,7 @@ Accuracy score for our own model with Decision Tree on test set is: 0.25
 </div>
 
 ```
-'conf matrix of Tree of our own model'
+Confusion matrix of Tree of our own model'
 ```
 
 <div>
@@ -995,10 +915,10 @@ Accuracy score for our own model with Decision Tree on test set is: 0.25
 </div>
 
 ```
-accuracy score for our own model with LDA  on train is: 0.5566778900112234
+The accuracy score for our own model with LDA  on train is: 0.5566778900112234
 ```
 
-### **_World Cup 2018 - Group Phase games_**
+#### World Cup 2018 - Group Phase games
 
 <div>
   <style scoped="">
@@ -1021,7 +941,7 @@ accuracy score for our own model with LDA  on train is: 0.5566778900112234
 </div>
 
 ```
-'conf matrix of Lda of our own model on test 1'
+The Confusion matrix of Lda of our own model on test 1'
 ```
 
 <div>
@@ -1045,7 +965,7 @@ accuracy score for our own model with LDA  on train is: 0.5566778900112234
 </div>
 
 ```
-accuracy score for our own model with LDA  on test set 1 is: 0.4791666666666667
+The accuracy score for our own model with LDA  on test set 1 is: 47.92%
 ```
 
 <div>
@@ -1069,7 +989,7 @@ accuracy score for our own model with LDA  on test set 1 is: 0.4791666666666667
 </div>
 
 ```
-'conf matrix of Tree of our own model'
+The Confusion matrix of Tree of our own model'
 ```
 
 <div>
@@ -1093,12 +1013,12 @@ accuracy score for our own model with LDA  on test set 1 is: 0.4791666666666667
 </div>
 
 ```
-accuracy score for our own model with LDA  on test set 2 is: 0.4375
+The accuracy score for our own model with LDA  on test set 2 is: 43.75%
 ```
 
-## QDA
+### 5) QDA
 
-## train set
+#### Train Set
 
 <div>
   <style scoped="">
@@ -1121,7 +1041,7 @@ accuracy score for our own model with LDA  on test set 2 is: 0.4375
 </div>
 
 ```
-'conf matrix of Tree of our own model'
+Confusion matrix of Tree of our own model'
 ```
 
 <div>
@@ -1145,10 +1065,10 @@ accuracy score for our own model with LDA  on test set 2 is: 0.4375
 </div>
 
 ```
-accuracy score for our own model with QDA  on train is: 0.43209876543209874
+The accuracy score for our own model with QDA  on train is: 43.21%
 ```
 
-## group phase- test1
+#### Group phase - test1
 
 <div>
   <style scoped="">
@@ -1171,7 +1091,7 @@ accuracy score for our own model with QDA  on train is: 0.43209876543209874
 </div>
 
 ```
-'conf matrix of Tree of our own model'
+Confusion matrix of Tree of our own model'
 ```
 
 <div>
@@ -1198,7 +1118,7 @@ accuracy score for our own model with QDA  on train is: 0.43209876543209874
 accuracy score for our own model with qda  on test set 1 is: 0.4583333333333333
 ```
 
-## group phase-test2
+#### Group phase - test2
 
 <div>
   <style scoped="">
@@ -1220,100 +1140,27 @@ accuracy score for our own model with qda  on test set 1 is: 0.4583333333333333
 </table>
 </div>
 
-## **_Random FOREST - Second Model_**
+### 6) Random FOREST - Second Model
 
-### **_Training Data set_**
-
-```
-accuracy score for the random forest model: 0.6745230078563412
-```
-
-### **_World Cup 2018 - Group Phase games_**
+#### Training Data set
 
 ```
-accuracy score for the random forest Test 1 model: 0.5208333333333334
-
-
-
-accuracy score for the random forest Test 2 model: 0.1875
+The accuracy score for the random forest model: 67.4%
 ```
 
-## **_Bagging - Second Model_**
+####  World Cup 2018 - Group Phase games
 
 ```
-train bootstrapped table:
+The accuracy score for the random forest Test 1 model: 52.08%
+
+
+
+The accuracy score for the random forest Test 2 model: 0.1875
 ```
 
-<div>
-  <style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+### 7) Bagging - Second Model
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-  <table border="1" class="dataframe">
-  <thead><tr style="text-align: right;"><th></th><th>Bootstrap-Model_1</th><th>Bootstrap-Model_2</th><th>Bootstrap-Model_3</th><th>Bootstrap-Model_4</th><th>Bootstrap-Model_5</th><th>Bootstrap-Model_6</th><th>Bootstrap-Model_7</th><th>Bootstrap-Model_8</th><th>Bootstrap-Model_9</th><th>Bootstrap-Model_10</th><th>...</th><th>Bootstrap-Model_36</th><th>Bootstrap-Model_37</th><th>Bootstrap-Model_38</th><th>Bootstrap-Model_39</th><th>Bootstrap-Model_40</th><th>Bootstrap-Model_41</th><th>Bootstrap-Model_42</th><th>Bootstrap-Model_43</th><th>Bootstrap-Model_44</th><th>Bootstrap-Model_45</th></tr></thead>
-  <tbody><tr><th>Training-Row_1</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Training-Row_2</th><td>0</td><td>1</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>...</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>Training-Row_3</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>...</td><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>1</td></tr><tr><th>Training-Row_4</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Training-Row_5</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr></tbody>
-</table>
-  <p>5 rows × 45 columns</p>
-</div>
-
-```
-test1 bootstrapped table:
-```
-
-<div>
-  <style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-  <table border="1" class="dataframe">
-  <thead><tr style="text-align: right;"><th></th><th>Bootstrap-Model_1</th><th>Bootstrap-Model_2</th><th>Bootstrap-Model_3</th><th>Bootstrap-Model_4</th><th>Bootstrap-Model_5</th><th>Bootstrap-Model_6</th><th>Bootstrap-Model_7</th><th>Bootstrap-Model_8</th><th>Bootstrap-Model_9</th><th>Bootstrap-Model_10</th><th>...</th><th>Bootstrap-Model_36</th><th>Bootstrap-Model_37</th><th>Bootstrap-Model_38</th><th>Bootstrap-Model_39</th><th>Bootstrap-Model_40</th><th>Bootstrap-Model_41</th><th>Bootstrap-Model_42</th><th>Bootstrap-Model_43</th><th>Bootstrap-Model_44</th><th>Bootstrap-Model_45</th></tr></thead>
-  <tbody><tr><th>Test-Row_1</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>1</td><td>1</td><td>1</td><td>1</td></tr><tr><th>Test-Row_2</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Test-Row_3</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Test-Row_4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>...</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>0</td><td>0</td><td>1</td><td>1</td></tr><tr><th>Test-Row_5</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody>
-</table>
-  <p>5 rows × 45 columns</p>
-</div>
-
-```
-test2 bootstrapped table:
-```
-
-<div>
-  <style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-  <table border="1" class="dataframe">
-  <thead><tr style="text-align: right;"><th></th><th>Bootstrap-Model_1</th><th>Bootstrap-Model_2</th><th>Bootstrap-Model_3</th><th>Bootstrap-Model_4</th><th>Bootstrap-Model_5</th><th>Bootstrap-Model_6</th><th>Bootstrap-Model_7</th><th>Bootstrap-Model_8</th><th>Bootstrap-Model_9</th><th>Bootstrap-Model_10</th><th>...</th><th>Bootstrap-Model_36</th><th>Bootstrap-Model_37</th><th>Bootstrap-Model_38</th><th>Bootstrap-Model_39</th><th>Bootstrap-Model_40</th><th>Bootstrap-Model_41</th><th>Bootstrap-Model_42</th><th>Bootstrap-Model_43</th><th>Bootstrap-Model_44</th><th>Bootstrap-Model_45</th></tr></thead>
-  <tbody><tr><th>Test-Row_1</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>...</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr><tr><th>Test-Row_2</th><td>2</td><td>0</td><td>0</td><td>1</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>...</td><td>2</td><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>Test-Row_3</th><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>...</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><th>Test-Row_4</th><td>1</td><td>0</td><td>1</td><td>0</td><td>2</td><td>2</td><td>0</td><td>1</td><td>0</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td><td>0</td><td>2</td></tr><tr><th>Test-Row_5</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>...</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr></tbody>
-</table>
-  <p>5 rows × 45 columns</p>
-</div>
 
 ```
 bagging model, training set accuracy: 0.5359147025813692
@@ -1321,7 +1168,7 @@ bagging model, test-1 set accuracy: 0.4375
 bagging model, test-2 set accuracy: 0.4375
 ```
 
-## Boosting-Second model
+### 8) Boosting-Second model
 
 ![png](milst4_files/milst4_180_0.png)
 
@@ -1370,9 +1217,9 @@ Depth = 4: best test set 2 accuracy at 440 estimators.
 train set accuracy score: 0.6689113355780022
 ```
 
-## Neural Networks - Second Model
+### 9) Neural Networks - Second Model
 
-### Training Data Set
+#### Training Data Set
 
 ```
 _________________________________________________________________
@@ -1392,15 +1239,15 @@ _________________________________________________________________
 
 the training set accuracy score is: 0.6341189675191972
 
-### World Cup 2018 - Group Phase games
+#### World Cup 2018 - Group Phase games
 
 test set 1 accuracy score is: 0.4583333333333333
 
-## World Cup 2018 -knockout phase
+#### World Cup 2018 -knockout phase
 
 test set 2 accuracy score is: 0.4375
 
-# Model Comparison on Accuracies - Second Models
+## Model Comparison on Accuracies - Second Models
 
 In this section:
 
