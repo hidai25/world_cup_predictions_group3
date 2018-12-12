@@ -89,7 +89,7 @@ There are n predictors for each team (a set of n predictors for the home_team an
 for the away_team). Using feature elimination x predictors were removed to avoid overfitting. With the
 remaining predictors, models were built with accuracies as listed in the table below.
 
-For our own model (34 features for each team):
+For our own model (69 features for each team):
 - Number of players who played in top 5 European leagues in 2017-2018
 - Number of players who played in the champions league 2017-2018
 - Average Players Wage
