@@ -1339,8 +1339,8 @@ Mean 5-Fold CV Accuracy Score by Model:
   <tr>
     <td class="tg-0lax"></td>
     <td class="tg-0lax">Test Set 1</td>
-    <td class="tg-0lax">0.5625</td>
     <td class="tg-0lax">0.6041</td>
+    <td class="tg-0lax">0.5625</td>
   </tr>
   <tr>
     <td class="tg-0lax"></td>
