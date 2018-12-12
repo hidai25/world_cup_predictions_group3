@@ -1,4 +1,7 @@
-
+---
+title: Results
+nav_include: 6
+---
 
 # Results of our baseline model
 
@@ -11,17 +14,18 @@ In this section, we display the results of our baseline model and we look for th
 - Random Forest
 - Neural Network
 
-# Classification methods
+# FIFA Ranking based Models
 
-# Logisitic regression - Baseline model
+As Stated in our project statement, we will first try to find the best model based on the FIFA Ranking before the begining of the World Cup 2018
 
-```
-Number of components that explain at least 90% of the variance= 8
-```
 
-![png](milst4_files/milst4_54_1.png)
+## Model Selection
 
-# train set
+### Logisitic regression - FIFA Ranking Based Model
+Our First model is built using multinomial Logistic Regression on the three classes in the y_train.
+We will use the training accuracy score of this model as our baseline for all the other models.
+
+#### Training Set
 
 ```
 Confusion matrix of logisitic regression:
@@ -47,9 +51,9 @@ Confusion matrix of logisitic regression:
 </table>
 </div>
 
-Accuracy score or the model logistic regression multinomial model is: 0.5246913580246914
+Accuracy score or the model logistic regression multinomial model is: 52.47%
 
-## test set
+#### Test Set (Word Cup 2018 Group Phase games)
 
 <div>
   <style scoped="">
@@ -96,7 +100,7 @@ Accuracy score or the model logistic regression multinomial model is: 0.52469135
 </div>
 
 ```
-accuracy score or the model logistic regression multinomial model on test set 1 is: 0.5208333333333334
+The accuracy score of the multinomial logistic regression model on the Group Phase Game is: 52.08%
 
 
 
@@ -124,18 +128,18 @@ accuracy score or the model logistic regression multinomial model on test set 1 
 </div>
 
 ```
-accuracy score or the baseline model with logistic regression on test set 2 is: 0.625
+The accuracy score of the multinomial logistic regression on Knockout games is: 62.5%
 ```
 
-# KNN - baseline model
+### KNN - FIFA Ranking Based Model
 
-# Pick the best k of the model
+Our second model was built on the k-Nearest Neighbors algorithm. To determine the optimal k for the training set, we used cross_val_score to evaluate different values of k on repeated subsamples of our training set
+The Best K for this model was  5.
 
-```
-Best K is 5.
-```
 
-## train set
+#### Training set
+
+Using the value k=5 we are now able to build the best kNN model
 
 ```
 'conf matrix of the KNN model of the train set on the baseline model'
