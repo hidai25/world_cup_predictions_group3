@@ -1492,3 +1492,1126 @@ Mean 5-Fold CV Accuracy Score by Model:
     <td class="tg-0lax">0.4375</td>
   </tr>
 </table>
+
+
+
+
+
+# Match predictions by the logistic regression model
+
+
+## Baseline model
+
+
+
+
+# All the results for the group phase
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>home_team</th>
+      <th>away_team</th>
+      <th>Observed</th>
+      <th>Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Russia</td>
+      <td>Saudi Arabia</td>
+      <td>Russia</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Egypt</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Morocco</td>
+      <td>Iran</td>
+      <td>Iran</td>
+      <td>Morocco</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Portugal</td>
+      <td>Spain</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>France</td>
+      <td>Australia</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Argentina</td>
+      <td>Iceland</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Peru</td>
+      <td>Denmark</td>
+      <td>Denmark</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Croatia</td>
+      <td>Nigeria</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Costa Rica</td>
+      <td>Serbia</td>
+      <td>Serbia</td>
+      <td>Serbia</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Germany</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Brazil</td>
+      <td>Switzerland</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Sweden</td>
+      <td>South Korea</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Belgium</td>
+      <td>Panama</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Tunisia</td>
+      <td>England</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Colombia</td>
+      <td>Japan</td>
+      <td>Japan</td>
+      <td>Japan</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Poland</td>
+      <td>Senegal</td>
+      <td>Senegal</td>
+      <td>Senegal</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Russia</td>
+      <td>Egypt</td>
+      <td>Russia</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Portugal</td>
+      <td>Morocco</td>
+      <td>Portugal</td>
+      <td>Portugal</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Uruguay</td>
+      <td>Saudi Arabia</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Iran</td>
+      <td>Spain</td>
+      <td>Spain</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Denmark</td>
+      <td>Australia</td>
+      <td>Draw</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>France</td>
+      <td>Peru</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Argentina</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Brazil</td>
+      <td>Costa Rica</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Nigeria</td>
+      <td>Iceland</td>
+      <td>Nigeria</td>
+      <td>Nigeria</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Serbia</td>
+      <td>Switzerland</td>
+      <td>Switzerland</td>
+      <td>Switzerland</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Belgium</td>
+      <td>Tunisia</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>South Korea</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Germany</td>
+      <td>Sweden</td>
+      <td>Germany</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>England</td>
+      <td>Panama</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Japan</td>
+      <td>Senegal</td>
+      <td>Draw</td>
+      <td>Senegal</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Poland</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Uruguay</td>
+      <td>Russia</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Saudi Arabia</td>
+      <td>Egypt</td>
+      <td>Saudi Arabia</td>
+      <td>Saudi Arabia</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Iran</td>
+      <td>Portugal</td>
+      <td>Draw</td>
+      <td>Portugal</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Spain</td>
+      <td>Morocco</td>
+      <td>Draw</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Denmark</td>
+      <td>France</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Australia</td>
+      <td>Peru</td>
+      <td>Peru</td>
+      <td>Peru</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Nigeria</td>
+      <td>Argentina</td>
+      <td>Argentina</td>
+      <td>Argentina</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Iceland</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Mexico</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>South Korea</td>
+      <td>Germany</td>
+      <td>South Korea</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Serbia</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Switzerland</td>
+      <td>Costa Rica</td>
+      <td>Draw</td>
+      <td>Costa Rica</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Japan</td>
+      <td>Poland</td>
+      <td>Poland</td>
+      <td>Poland</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Senegal</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Panama</td>
+      <td>Tunisia</td>
+      <td>Tunisia</td>
+      <td>Tunisia</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>England</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+## all the results for the Knockout phase
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>home_team</th>
+      <th>away_team</th>
+      <th>Observed</th>
+      <th>Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>France</td>
+      <td>Argentina</td>
+      <td>France</td>
+      <td>Argentina</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>Uruguay</td>
+      <td>Portugal</td>
+      <td>Uruguay</td>
+      <td>Portugal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>50</td>
+      <td>Spain</td>
+      <td>Russia</td>
+      <td>Russia</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51</td>
+      <td>Croatia</td>
+      <td>Denmark</td>
+      <td>Croatia</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>52</td>
+      <td>Brazil</td>
+      <td>Mexico</td>
+      <td>Brazil</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>53</td>
+      <td>Belgium</td>
+      <td>Japan</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>54</td>
+      <td>Sweden</td>
+      <td>Switzerland</td>
+      <td>Sweden</td>
+      <td>Switzerland</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>55</td>
+      <td>Colombia</td>
+      <td>England</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>56</td>
+      <td>Uruguay</td>
+      <td>France</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>57</td>
+      <td>Brazil</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>58</td>
+      <td>Sweden</td>
+      <td>England</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>59</td>
+      <td>Russia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>60</td>
+      <td>France</td>
+      <td>Belgium</td>
+      <td>France</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>61</td>
+      <td>England</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>62</td>
+      <td>Belgium</td>
+      <td>England</td>
+      <td>Belgium</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>63</td>
+      <td>France</td>
+      <td>Croatia</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+## Our model
+
+
+
+```
+# # # fit the logistic regression model
+reg2 = LogisticRegression(penalty='l2',multi_class='multinomial', solver='lbfgs', random_state=123456)
+x,y = prepare_data(x_train,y_train,result2_std)
+reg2.fit(x,y)
+
+# # test set code
+x,y = prepare_data(x_test1,y_test1,result2_std)
+ypredmf1_test_om = reg2.predict(x)
+df_predmf1_test_om = encoder(ypredmf1_test_om,y_test1,x_test1)
+
+x,y = prepare_data(x_test1,y_test1,result2_std)
+ypredmf1_test = reg2.predict(x)
+df_predmf1_test = encoder(ypredmf1_test,y_test1,x_test1)
+```
+
+
+
+
+```
+# dataframe for all the results for the group phase
+final_test1_om = pd.merge(x_test1, df_predml1_test,left_index=True, right_index=True)
+display(final_test1_om)
+```
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>home_team</th>
+      <th>away_team</th>
+      <th>Observed</th>
+      <th>Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Russia</td>
+      <td>Saudi Arabia</td>
+      <td>Russia</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Egypt</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Morocco</td>
+      <td>Iran</td>
+      <td>Iran</td>
+      <td>Morocco</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Portugal</td>
+      <td>Spain</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>France</td>
+      <td>Australia</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Argentina</td>
+      <td>Iceland</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Peru</td>
+      <td>Denmark</td>
+      <td>Denmark</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Croatia</td>
+      <td>Nigeria</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Costa Rica</td>
+      <td>Serbia</td>
+      <td>Serbia</td>
+      <td>Serbia</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Germany</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Brazil</td>
+      <td>Switzerland</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Sweden</td>
+      <td>South Korea</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Belgium</td>
+      <td>Panama</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Tunisia</td>
+      <td>England</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Colombia</td>
+      <td>Japan</td>
+      <td>Japan</td>
+      <td>Japan</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Poland</td>
+      <td>Senegal</td>
+      <td>Senegal</td>
+      <td>Senegal</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Russia</td>
+      <td>Egypt</td>
+      <td>Russia</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Portugal</td>
+      <td>Morocco</td>
+      <td>Portugal</td>
+      <td>Portugal</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Uruguay</td>
+      <td>Saudi Arabia</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Iran</td>
+      <td>Spain</td>
+      <td>Spain</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Denmark</td>
+      <td>Australia</td>
+      <td>Draw</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>France</td>
+      <td>Peru</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Argentina</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Brazil</td>
+      <td>Costa Rica</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Nigeria</td>
+      <td>Iceland</td>
+      <td>Nigeria</td>
+      <td>Nigeria</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Serbia</td>
+      <td>Switzerland</td>
+      <td>Switzerland</td>
+      <td>Switzerland</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Belgium</td>
+      <td>Tunisia</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>South Korea</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Germany</td>
+      <td>Sweden</td>
+      <td>Germany</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>England</td>
+      <td>Panama</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Japan</td>
+      <td>Senegal</td>
+      <td>Draw</td>
+      <td>Senegal</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Poland</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Uruguay</td>
+      <td>Russia</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Saudi Arabia</td>
+      <td>Egypt</td>
+      <td>Saudi Arabia</td>
+      <td>Saudi Arabia</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Iran</td>
+      <td>Portugal</td>
+      <td>Draw</td>
+      <td>Portugal</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Spain</td>
+      <td>Morocco</td>
+      <td>Draw</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Denmark</td>
+      <td>France</td>
+      <td>Draw</td>
+      <td>Draw</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Australia</td>
+      <td>Peru</td>
+      <td>Peru</td>
+      <td>Peru</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Nigeria</td>
+      <td>Argentina</td>
+      <td>Argentina</td>
+      <td>Argentina</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Iceland</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Mexico</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>South Korea</td>
+      <td>Germany</td>
+      <td>South Korea</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Serbia</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Switzerland</td>
+      <td>Costa Rica</td>
+      <td>Draw</td>
+      <td>Costa Rica</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Japan</td>
+      <td>Poland</td>
+      <td>Poland</td>
+      <td>Poland</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Senegal</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+      <td>Colombia</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Panama</td>
+      <td>Tunisia</td>
+      <td>Tunisia</td>
+      <td>Tunisia</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>England</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```
+# test 2 code
+x,y = prepare_data(x_test2,y_test2,result2_std)
+ypredml2_test = knockout_test(reg2,x)
+df_predml2_test = encoder(ypredml2_test,y_test2,x_test2)
+```
+
+
+
+
+```
+# dataframe for all the results for the Knockout phase
+x_test2_reset=x_test2.reset_index()
+final_test2_om=pd.merge(x_test2_reset,df_predml2_test,left_index=True, right_index=True)
+display(final_test2_om)
+```
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>home_team</th>
+      <th>away_team</th>
+      <th>Observed</th>
+      <th>Predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>France</td>
+      <td>Argentina</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>49</td>
+      <td>Uruguay</td>
+      <td>Portugal</td>
+      <td>Uruguay</td>
+      <td>Uruguay</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>50</td>
+      <td>Spain</td>
+      <td>Russia</td>
+      <td>Russia</td>
+      <td>Spain</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>51</td>
+      <td>Croatia</td>
+      <td>Denmark</td>
+      <td>Croatia</td>
+      <td>Denmark</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>52</td>
+      <td>Brazil</td>
+      <td>Mexico</td>
+      <td>Brazil</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>53</td>
+      <td>Belgium</td>
+      <td>Japan</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>54</td>
+      <td>Sweden</td>
+      <td>Switzerland</td>
+      <td>Sweden</td>
+      <td>Sweden</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>55</td>
+      <td>Colombia</td>
+      <td>England</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>56</td>
+      <td>Uruguay</td>
+      <td>France</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>57</td>
+      <td>Brazil</td>
+      <td>Belgium</td>
+      <td>Belgium</td>
+      <td>Brazil</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>58</td>
+      <td>Sweden</td>
+      <td>England</td>
+      <td>England</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>59</td>
+      <td>Russia</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>Russia</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>60</td>
+      <td>France</td>
+      <td>Belgium</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>61</td>
+      <td>England</td>
+      <td>Croatia</td>
+      <td>Croatia</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>62</td>
+      <td>Belgium</td>
+      <td>England</td>
+      <td>Belgium</td>
+      <td>England</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>63</td>
+      <td>France</td>
+      <td>Croatia</td>
+      <td>France</td>
+      <td>France</td>
+    </tr>
+  </tbody>
+</table>
+</div>
