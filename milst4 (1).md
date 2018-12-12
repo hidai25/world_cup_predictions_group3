@@ -1,5 +1,5 @@
 ---
-title: Results
+title: 
 nav_include: 6
 ---
 
