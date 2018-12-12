@@ -1296,3 +1296,228 @@ accuracy score for the random forest of our model on the train set : 0.671717171
 accuracy score for the random forest of model test 1 is: 0.5625
 accuracy score for the random forest of our model test2 is model: 0.25
 ```
+
+Overall Comparison of the Baseline Model and our Model
+
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0lax">Model</th>
+    <th class="tg-0lax">Set</th>
+    <th class="tg-0lax">Baseline Model Acc. Score</th>
+    <th class="tg-0lax">Our own Model Acc. Score</th>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Logistic regression</td>
+    <td class="tg-0lax">Train set</td>
+    <td class="tg-0lax">0.52469</td>
+    <td class="tg-0lax">0.55499</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test set 1</td>
+    <td class="tg-0lax">0.52083</td>
+    <td class="tg-0lax">0.54167</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test set 2</td>
+    <td class="tg-0lax">0.625</td>
+    <td class="tg-0lax">0.625</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">KNN</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.62458</td>
+    <td class="tg-0lax">0.6156</td>
+  </tr><tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test set 1</td>
+    <td class="tg-0lax">0.5</td>
+    <td class="tg-0lax">0.52083</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test set 2</td>
+    <td class="tg-0lax">0.4375</td>
+    <td class="tg-0lax">0.4375</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr><tr>
+    <td class="tg-0lax">Decision Tree</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.67115</td>
+    <td class="tg-0lax">0.6734</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test Set 1</td>
+    <td class="tg-0lax">0.5625</td>
+    <td class="tg-0lax">0.6041</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test Set 2</td>
+    <td class="tg-0lax">0.3125</td>
+    <td class="tg-0lax">0.25</td>
+  </tr><tr>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax"></th>
+  </tr>
+  <tr>
+    <td class="tg-0lax">LDA</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.52525</td>
+    <td class="tg-0lax">0.55667</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test Set 1</td>
+    <td class="tg-0lax">0.5</td>
+    <td class="tg-0lax">0.47916</td>
+  </tr>
+   <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test Set 2</td>
+    <td class="tg-0lax">0.6875</td>
+    <td class="tg-0lax">0.4375</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">QDA</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.52974</td>
+    <td class="tg-0lax">0.43209</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 1</td>
+    <td class="tg-0lax">0.4375</td>
+    <td class="tg-0lax">0.5625</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 2</td>
+    <td class="tg-0lax">0.45833</td>
+    <td class="tg-0lax">0.375</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Random Forest</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.67284</td>
+    <td class="tg-0lax">0.67452</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 1</td>
+    <td class="tg-0lax">0.6667</td>
+    <td class="tg-0lax">0.52083</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 2</td>
+    <td class="tg-0lax">0.1875</td>
+    <td class="tg-0lax">0.1875</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Bagging</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.41667</td>
+    <td class="tg-0lax">0.4375</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 1</td>
+    <td class="tg-0lax">0.35416</td>
+    <td class="tg-0lax">0.5625</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 2</td>
+    <td class="tg-0lax">0.4375</td>
+    <td class="tg-0lax">0.4375</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Boosting</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.65095</td>
+    <td class="tg-0lax">0.66554</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 1</td>
+    <td class="tg-0lax">0.60417</td>
+    <td class="tg-0lax">0.60417</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 2</td>
+    <td class="tg-0lax">0.5625</td>
+    <td class="tg-0lax">0.6875</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Neural Network</td>
+    <td class="tg-0lax">Train Set</td>
+    <td class="tg-0lax">0.64646</td>
+    <td class="tg-0lax">0.63861</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 1</td>
+    <td class="tg-0lax">0.45833</td>
+    <td class="tg-0lax">0.45833</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax">Test 2</td>
+    <td class="tg-0lax">0.5625</td>
+    <td class="tg-0lax">0.4375</td>
+  </tr>
+</table>
