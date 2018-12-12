@@ -1503,9 +1503,7 @@ Mean 5-Fold CV Accuracy Score by Model:
 ## Baseline model
 
 
-
-
-# All the results for the group phase
+## All the results for the group phase
 
 
 
@@ -1875,7 +1873,7 @@ Mean 5-Fold CV Accuracy Score by Model:
 </div>
 
 
-## all the results for the Knockout phase
+## All the results for the Knockout phase
 
 
 
