@@ -5,7 +5,6 @@ nav_include: 5
 
 As stated in the problem statement, the main objective of this project is to predict outcome of the 64
 matches played in World Cup 2018 using machine learning.
-Section “Data” discusses using the multi class response variable to predict outcome.
 
 # Baseline Model
 
