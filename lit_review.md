@@ -2,8 +2,4 @@
 title: Litterature Review
 nav_include: 8
 ---
-World Cup 2018 was played in Russia. This was the 21st FIFA World Cup. It took place from
-14th June to 15 July 2018. Based on the friendly matches played, Germany was a top
-contender however in the actual game the team was out of the games in the first round.
-Another talented team Spain fired their coach one week before the beginning of the World
-Cup impacting their wins although there is no certain way to validate.
+For this section, we will go into further detail about our research into various data sources that informed our scraping choices and later on, our predictor menu. Wikipedia was quite useful in terms of background and historical statistics for teams and their respective players, and served as a natural starting point for out model’s development. However, in our early stages of data exploration, we found it necessary to work in more nuanced match statistics, and thus, we pulled in data from sofifa.com to enrich the original data derived from Wikipedia. A closer examination of sofifa.com also indicated that it held many more valuable data assets more pertinent to individual player performance. Thus, this site very much helped inform our modeling approach, as our EDA using sofifa.com demonstrated to us the sheer importance and predictive power of nuanced statistics like agility, or even more subjective statistics like potential. Through this organic method, we stray from an overt reliance on  the overlying FIFA ranking system, as this may allow for less arbitrary and controlled model features.
