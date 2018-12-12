@@ -1,6 +1,6 @@
 
 
-<img src="images/overpic.png" width="980" height="400" />
+<img src="images/fifagr.png"  />
 <figcaption class="credit">
     <span>
         	        Image by Fifa.com
