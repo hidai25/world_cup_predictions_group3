@@ -22,7 +22,7 @@ As Stated in our project statement, we will first try to find the best model bas
 
 ## Model Selection
 
-### Logisitic regression - FIFA Ranking Based Model
+### 1)Logisitic regression - FIFA Ranking Based Model
 
 Our First model is built using multinomial Logistic Regression on the three classes in the y_train.
 We will use the training accuracy score of this model as our baseline for all the other models.
