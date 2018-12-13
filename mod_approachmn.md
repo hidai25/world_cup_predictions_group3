@@ -1,9 +1,12 @@
-
+---
+title: Modeling approach
+nav_include: 5
+---
 
 As stated in the problem statement, the main objective of this project is to predict outcome of the 64
 matches played in World Cup 2018 using machine learning.
 
-# Baseline Model
+# Baseline Model or  FIFA Ranking based Model
 
 The baseline model has the home_team and away_team. These are the 2 teams that played the
 match. For each of these 2 teams, the following predictors are added:
@@ -14,72 +17,15 @@ match. For each of these 2 teams, the following predictors are added:
 5. Average number of caps (International match participations of every players in the team averaged).
 6. Number of wins of the last 20 games that preceded the the world cup for each team.
 The x_train now has (6*2) features and y_train is the outcome of the match that will have value of either
-the name of the winning team or ‘Draw’ if the outcome was a draw. Multiple models such as logistic regression,
-Random Forest, Decision Tree, k-NN, LDA and QDA were built on the training set of data. Here’s a
-table of the models and their corresponding accuracies on the validation set.
+the name of the winning team or ‘Draw’ if the outcome was a draw.
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Model</th>
-      <th>CV_Accuracy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>Random Forest</td>
-      <td>0.6016</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Decision Tree</td>
-      <td>0.5864</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>KNN</td>
-      <td>0.5404</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>LDA</td>
-      <td>0.5205</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>QDA</td>
-      <td>0.5126</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Logistic Regression</td>
-      <td>0.4950</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+Multiple models such as logistic regression,
+Random Forest, Decision Tree, k-NN, LDA and QDA were built on the training set of data.
 Later on, we tested our models on ensemble methods as well so that we get the best possible accuracy level.
 
 
 
-# Our Model
+# Our Model or NON-FIFA Ranking Based Model
 
 The second model will be trained on features other than the 6 predictors used in the baseline model.
 There are n predictors for each team (a set of n predictors for the home_team and set of n predictors
