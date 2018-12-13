@@ -15,7 +15,9 @@ games can be determined.
 ## Objective
 
 The main objective of this project is to predict the outcome of all 64 games played in the World Cup
-2018. The following three-step approach is implemented to arrive at this objective:
+2018.
+
+The following three-step approach is implemented to arrive at this objective:
 
 1. Explore all the features that play a role in the outcome of the games. In detail, analyze the
 significant predictors and then build a baseline model based on the FIFA ranking for national teams before the actual game
