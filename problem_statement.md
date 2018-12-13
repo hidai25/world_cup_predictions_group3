@@ -15,8 +15,8 @@ The main objective of this project is to predict the outcome of all 64 games pla
 2018. The following three-step approach is implemented to arrive at this objective:
 
 1. Explore all the features that play a role in the outcome of the games. In detail, analyze the
-significant predictors. Build a baseline model based on the FIFA ranking for national teams before the actual game.
-(Ranking on June 7th, 2018 was used) In addition to the FIFA ranking predictors, few other
+significant predictors. Build a baseline model based on the FIFA ranking for national teams before the actual game
+(Ranking on June 7th, 2018 was used). In addition to the FIFA ranking predictors, few other
 predictors were used to predict the outcome of each of the games.
 2. Build a second model with predictors other than the FIFA ranking to predict the games played
 at world cup.
