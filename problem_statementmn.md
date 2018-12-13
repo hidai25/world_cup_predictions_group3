@@ -1,4 +1,7 @@
-
+---
+title: Problem Statement
+nav_include: 2
+---
 <h2> Motivation </h2>
 Many sports are played around the world where fan clubs passionately cheer for their teams.
 Attempting to predict winners at these games is common across sports. In many sports, teams that
@@ -13,6 +16,7 @@ games can be determined.
 
 The main objective of this project is to predict the outcome of all 64 games played in the World Cup
 2018. The following three-step approach is implemented to arrive at this objective:
+
 1. Explore all the features that play a role in the outcome of the games. In detail, analyze the
 significant predictors.
 2. Build a baseline model based on the FIFA ranking for national teams before the actual game.
