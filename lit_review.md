@@ -1,5 +1,5 @@
 ---
-title: Litterature Review
+title: Literature Review
 nav_include: 8
 ---
 For this section, we will go into further detail about our research into various data sources that informed our scraping choices and later on, our predictor menu. Wikipedia was quite useful in terms of background and historical statistics for teams and their respective players, and served as a natural starting point for out model’s development. However, in our early stages of data exploration, we found it necessary to work in more nuanced match statistics, and thus, we pulled in data from sofifa.com to enrich the original data derived from Wikipedia. A closer examination of sofifa.com also indicated that it held many more valuable data assets more pertinent to individual player performance. Thus, this site very much helped inform our modeling approach, as our EDA using sofifa.com demonstrated to us the sheer importance and predictive power of nuanced statistics like agility, or even more subjective statistics like potential. Through this organic method, we stray from an overt reliance on  the overlying FIFA ranking system, as this may allow for less arbitrary and controlled model features.
