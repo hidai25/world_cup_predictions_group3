@@ -1,8 +1,10 @@
+---
+title: Results
+nav_include: 6
+---
 
-
-# Baseline Model
-
-In this section, we display the results of our baseline model and we look for the best Hyper parameters for each model tried. The model to be tried include:
+In this section, we display the results of FIFA Ranking and non FIFA Ranking based models and we look for the best Hyper parameters for each model tried.
+The models to be tried on each features are:
 
 - Multinomial logistic Regression
 - kNN
@@ -18,7 +20,7 @@ As Stated in our project statement, we will first try to find the best model bas
 
 ## Model Selection
 
-### 1) Logisitic regression - FIFA Ranking Based Model
+<h3 style=“color:red>1) Logisitic regression - FIFA Ranking Based Model</h3>
 Our First model is built using multinomial Logistic Regression on the three classes in the y_train.
 We will use the training accuracy score of this model as our baseline for all the other models.
 
