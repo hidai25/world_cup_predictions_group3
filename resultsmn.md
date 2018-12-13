@@ -13,6 +13,8 @@ The models to be tried on each features are:
 - Random Forest
 - Neural Network
 
+On the bottom of this page an aggregating table of all our results was implemented as well as a table showing the real predictions for the World Cup games.
+ 
 # FIFA Ranking based Models
 
 As Stated in our project statement, we will first try to find the best model based on the FIFA Ranking before the begining of the World Cup 2018
